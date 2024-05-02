@@ -21,9 +21,10 @@ function Login(){
         },
         body: JSON.stringify([username,password])
       })
-      .then(response => response.json())
+      .then(response => response.text())
       .then(userId => {
         alert(userId);
+        navigate('/home')
       });
     };
 
