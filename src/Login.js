@@ -10,12 +10,21 @@ function Login(){
     const [loggedIn, setLoggedIn] = useState(false);
     const navigate = useNavigate()
     
-    const handleLogin = (event) => {
+    const handleLogin = async (event) => {
       event.preventDefault();
       setLoggedIn(true);
-      localStorage.setItem('username',username);
-      localStorage.setItem('loggedIn',loggedIn)
-      navigate("/home");
+
+      await fetch('http://localhost:9092/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify([username,password])
+      })
+      .then(response => response.json())
+      .then(userId => {
+        alert(userId);
+      });
     };
 
     return (
