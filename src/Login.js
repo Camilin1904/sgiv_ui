@@ -14,7 +14,7 @@ function Login(){
       event.preventDefault();
       setLoggedIn(true);
 
-      await fetch('http://localhost:9092/login', {
+      await fetch('http://localhost:9092/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,21 +43,23 @@ function Login(){
           <div id="i8wcy">Inicio de sesión
           </div>
         </div>
-        <div class="cell" id="igcgf">
-          <div class="row" id="iwdgj">
-            <div class="cell" id="ix3e6">
-              <div class="login-label" id="ig1lp">Usuario
+        <form onSubmit={handleLogin}>
+          <div class="cell" id="igcgf">
+            <div class="row" id="iwdgj">
+              <div class="cell" id="ix3e6">
+                <div class="login-label" id="ig1lp">Usuario
+                </div>
+                <input type="text" id="ioi0v" placeholder="Usuario" required class="login-input" onChange={(e) => setUsername(e.target.value)}/>
               </div>
-              <input type="text" id="ioi0v" placeholder="Usuario" required class="login-input"/>
-            </div>
-            <div class="cell" id="ivtuz">
-              <div class="login-label" id="iduiy">Contraseña
+              <div class="cell" id="ivtuz">
+                <div class="login-label" id="iduiy">Contraseña
+                </div>
+                <input type="password" placeholder="Contraseña" required id="loginPass" class="login-input" onChange={(e) => setPassword(e.target.value)}/>
               </div>
-              <input type="password" placeholder="Contraseña" required id="loginPass" class="login-input"/>
             </div>
+            <button type="submit" id="iid2k">Iniciar sesión</button>
           </div>
-          <button type="button" id="iid2k">Iniciar sesión</button>
-        </div>
+        </form>
       </div>
     </div>
     <div class="cell" id="i53ac">
