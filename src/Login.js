@@ -14,7 +14,7 @@ function Login(){
       event.preventDefault();
       setLoggedIn(true);
 
-      await fetch('http://localhost:9092/login', {
+      await fetch('http://localhost:9092/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
