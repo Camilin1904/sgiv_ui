@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './css/App.css';
+import './css/login.css';
 import logo from './img/logo.png';
 import loginPic from './img/loginPic.png';
 import { useNavigate } from "react-router-dom";
@@ -30,26 +30,41 @@ function Login(){
 
     return (
         <>
-          <div className="top-bar" style={{ backgroundColor: '#0159A1' }}>
-            <img src={logo} alt="Logo" className="logo" />
+          <body id="ii2r">
+  <div class="row" id="i10d">
+    <div class="cell" id="ilv1">
+       <img id='ijcaw' src={logo}/>
+    </div>
+  </div>
+  <div class="row" id="i26g">
+    <div class="cell" id="i8hi">
+      <div class="row" id="iwn8g">
+        <div class="cell" id="ienco">
+          <div id="i8wcy">Inicio de sesión
           </div>
-          <header className="App-header">
-            <h2 className='login-label-greet'>Inicio de sesión</h2> {}
-            <form onSubmit={handleLogin}>
-              <div className="login-container">
-                <label className="login-label">Nombre de usuario:</label>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="login-input" />
+        </div>
+        <div class="cell" id="igcgf">
+          <div class="row" id="iwdgj">
+            <div class="cell" id="ix3e6">
+              <div class="login-label" id="ig1lp">Usuario
               </div>
-              <div className="login-container">
-                <label className="login-label">Contraseña:</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="login-input" />
+              <input type="text" id="ioi0v" placeholder="Usuario" required class="login-input"/>
+            </div>
+            <div class="cell" id="ivtuz">
+              <div class="login-label" id="iduiy">Contraseña
               </div>
-              <button type="submit" className="login-button">Iniciar sesión</button>
-            </form>
-          </header>
-          <div className="image-container">
-            <img src={loginPic} alt="loginPic" className="right-image" />
+              <input type="password" placeholder="Contraseña" required id="loginPass" class="login-input"/>
+            </div>
           </div>
+          <button type="button" id="iid2k">Iniciar sesión</button>
+        </div>
+      </div>
+    </div>
+    <div class="cell" id="i53ac">
+      <img id="ipq92" src={loginPic}/>
+    </div>
+  </div>
+</body>
         </>  
       );
 
