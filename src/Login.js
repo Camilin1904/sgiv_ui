@@ -57,8 +57,8 @@ function Login(){
                 <input type="password" placeholder="Contraseña" required id="loginPass" class="login-input" onChange={(e) => setPassword(e.target.value)}/>
               </div>
             </div>
-            <button type="submit" id="iid2k">Iniciar sesión</button>
           </div>
+          <button type="submit" id="iid2k">Iniciar sesión</button>
         </form>
       </div>
     </div>
