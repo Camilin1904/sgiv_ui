@@ -7,23 +7,23 @@ import { useNavigate } from "react-router-dom";
 function Login(){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
+    //const [loggedIn, setLoggedIn] = useState(false);
     const navigate = useNavigate()
     
     const handleLogin = async (event) => {
       event.preventDefault();
-      setLoggedIn(true);
 
       await fetch('http://localhost:9092/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify([username,password])
+        body: JSON.stringify({"username":username,"password":password})
       })
       .then(response => response.text())
       .then(userId => {
-        alert(userId);
+        //alert(userId);
+
         navigate('/home')
       });
     };
