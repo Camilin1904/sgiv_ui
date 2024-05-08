@@ -12,7 +12,7 @@ function Login(){
     
     const handleLogin = async (event) => {
       event.preventDefault();
-
+      var response = "";
       await fetch('http://localhost:9092/auth/login', {
         method: 'POST',
         headers: {
@@ -20,11 +20,16 @@ function Login(){
         },
         body: JSON.stringify({"username":username,"password":password})
       })
-      .then(response => response.text())
-      .then(userId => {
-        //alert(userId);
+      .then(res => response = res.text())
+      .then(token => {
+        alert(token);
+        if(token){
+          const t = JSON.parse(token)
+          localStorage.setItem("token",t['token'])
+          navigate('/home')
+        }
 
-        navigate('/home')
+        
       });
     };
 
