@@ -8,7 +8,7 @@ function Login(){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     
     const handleLogin = async (event) => {
       event.preventDefault();
@@ -19,12 +19,18 @@ function Login(){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify([username,password])
+        body: JSON.stringify({"username":username,"password":password})
       })
       .then(response => response.text())
-      .then(userId => {
-        alert(userId);
-        navigate('/home')
+      .then(response => {
+        try{
+          const responseJson = JSON.parse(response);
+          localStorage.setItem("token",responseJson.token);
+          localStorage.setItem("username",username);
+          navigate('/home');
+        } catch(error){
+          alert("Nombre de usuario o constraseña incorrectos")
+        }
       });
     };
 

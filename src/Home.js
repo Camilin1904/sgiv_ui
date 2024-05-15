@@ -5,6 +5,7 @@ import logo from './img/logo.png';
 function Home(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
+    const token = localStorage.getItem('token')
     const handleLogout = () => {
       navigate('/')
     };
@@ -18,6 +19,9 @@ function Home(){
           <header className="App-header">
             <p>
               Bienvenido, {username}!
+            </p>
+            <p>
+              Token: {token}
             </p>
             <button onClick={handleLogout} className="logout-button">Cerrar sesión</button>
           </header>
