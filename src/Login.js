@@ -38,7 +38,7 @@ function Login(){
               navigate('/home-viewer');
             }
         } catch(error){
-          console.log(error);
+            alert("Nombre de usuario o constraseña incorrectos");
         } 
       });
     }

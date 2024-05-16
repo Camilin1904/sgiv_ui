@@ -144,6 +144,19 @@ body {
   font-size:36px;
   width:30%;
 }
+.alert {
+  display: flex;
+  margin: 2rem 0 2rem 0 ;
+  height: 5rem;
+  background-color: #13247B;
+  align-items: center;
+  justify-content: center;
+}
+.alert p {
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 0;
+}
 @media (max-width: 992px){
   #ipq92{
     height:101.5%;
