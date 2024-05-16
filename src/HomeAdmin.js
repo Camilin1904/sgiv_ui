@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import './css/homeAdmin.css';
 import logo from './img/logo.png';
+import StatService from './service/StatService';
+import { useEffect, useState } from 'react';
 
 function HomeAdmin(){
     const navigate = useNavigate()
@@ -9,6 +11,24 @@ function HomeAdmin(){
     const handleLogout = () => {
       navigate('/')
     };
+
+    const [popularDestination, setPopularDestination] = useState('');
+    useEffect(()=>{
+      fetch ('http://localhost:9092/stat/pop_dest',{
+        method : 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token'),
+          'Access-Control-Allow-Origin': 'http://localhost:9092'
+        }
+        
+      }).then(response => response.text())
+      .then(response =>{
+        const res = JSON.parse(response);
+        setPopularDestination(res.name);
+      })
+    })
+    
 
     return (
       <body id="ii2r">
@@ -76,7 +96,7 @@ function HomeAdmin(){
                           </div>
                         </div>
                         <div id="ivvm3" class="gjs-cell">
-                          <div id="ir9v2">Insert your text here
+                          <div id="ir9v2">{popularDestination}
                           </div>
                         </div>
                       </div>
