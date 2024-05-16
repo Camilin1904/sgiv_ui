@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './css/App.css';
+import './css/login.css';
 import logo from './img/logo.png';
 import loginPic from './img/loginPic.png';
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 function Login(){
     const [username, setUsername] = useState('');
@@ -12,7 +13,6 @@ function Login(){
     
     const handleLogin = async (event) => {
       event.preventDefault();
-      setLoggedIn(true);
 
       await fetch('http://localhost:9092/auth/login', {
         method: 'POST',
@@ -24,38 +24,64 @@ function Login(){
       .then(response => response.text())
       .then(response => {
         try{
-          const responseJson = JSON.parse(response);
-          localStorage.setItem("token",responseJson.token);
+          const loginResponse = JSON.parse(response);
+          const token = loginResponse.token;
+          const decodedToken = jwtDecode(token);
+          const type = decodedToken.Authorities[0].name;
           localStorage.setItem("username",username);
-          navigate('/home');
+          localStorage.setItem("token",token);
+            if(type==="Admin"){
+              navigate('/home-admin');
+            } else if(type==="Sales"){
+              navigate('/home-sales');
+            } else if(type==="Viewer"){
+              navigate('/home-viewer');
+            }
         } catch(error){
-          alert("Nombre de usuario o constraseña incorrectos")
-        }
+          console.log(error);
+        } 
       });
-    };
+    }
 
     return (
         <>
-          <div className="top-bar" style={{ backgroundColor: '#0159A1' }}>
-            <img src={logo} alt="Logo" className="logo" />
+          <body id="ii2r">
+  <div class="row" id="i10d">
+    <div class="cell" id="ilv1">
+       <img id='ijcaw' src={logo}/>
+    </div>
+  </div>
+  <div class="row" id="i26g">
+    <div class="cell" id="i8hi">
+      <div class="row" id="iwn8g">
+        <div class="cell" id="ienco">
+          <div id="i8wcy">Inicio de sesión
           </div>
-          <header className="App-header">
-            <h2 className='login-label-greet'>Inicio de sesión</h2> {}
-            <form onSubmit={handleLogin}>
-              <div className="login-container">
-                <label className="login-label">Nombre de usuario:</label>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="login-input" />
+        </div>
+        <form onSubmit={handleLogin}>
+          <div class="cell" id="igcgf">
+            <div class="row" id="iwdgj">
+              <div class="cell" id="ix3e6">
+                <div class="login-label" id="ig1lp">Usuario
+                </div>
+                <input type="text" id="ioi0v" placeholder="Usuario" required class="login-input" onChange={(e) => setUsername(e.target.value)}/>
               </div>
-              <div className="login-container">
-                <label className="login-label">Contraseña:</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="login-input" />
+              <div class="cell" id="ivtuz">
+                <div class="login-label" id="iduiy">Contraseña
+                </div>
+                <input type="password" placeholder="Contraseña" required id="loginPass" class="login-input" onChange={(e) => setPassword(e.target.value)}/>
               </div>
-              <button type="submit" className="login-button">Iniciar sesión</button>
-            </form>
-          </header>
-          <div className="image-container">
-            <img src={loginPic} alt="loginPic" className="right-image" />
+            </div>
           </div>
+          <button type="submit" id="iid2k">Iniciar sesión</button>
+        </form>
+      </div>
+    </div>
+    <div class="cell" id="i53ac">
+      <img id="ipq92" src={loginPic}/>
+    </div>
+  </div>
+</body>
         </>  
       );
 
