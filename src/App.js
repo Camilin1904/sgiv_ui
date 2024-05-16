@@ -8,6 +8,9 @@ import { Login } from './Login';
 import { HomeAdmin } from './HomeAdmin'
 import { HomeSales } from './HomeSales'
 import { HomeViewer } from './HomeViewer'
+import { ViewClients } from './VistaClientes';
+import { ViewPlan } from './VistaPlanes';
+import { ViewPlanDetail } from './VistaDetallePlan';
 
 function App() {
   return(
@@ -16,6 +19,10 @@ function App() {
       <Route path='/home-admin' element={<HomeAdmin/>} />
       <Route path='/home-sales' element={<HomeSales/>} />
       <Route path='/home-viewer' element={<HomeViewer/>} />
+      <Route path='/view-clients' element={<ViewClients/>} />
+      <Route path='/view-plans' element={<ViewPlan/>} />
+      <Route path='/view-plan-details' element={<ViewPlanDetail/>} />
+
     </Routes>
   )
 }

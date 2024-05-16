@@ -5,9 +5,10 @@ class StatService{
 
 
     popularDestination() {
-        return request('GET', 'http://localhost:9092/stat/pop_dest')
+        return request('GET', 'http://localhost:9092/stat/pop_dest', {Authorization : localStorage.getItem('token')})
         .then(response => response.data)
         .then(response => {
+            console.log("HOLAAA");
             return response;
         });
     }
