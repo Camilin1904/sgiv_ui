@@ -2,9 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import './css/homeViewer.css';
 import logo from './img/logo.png';
 
-function Home(){
+function HomeViewer(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
+    const token = localStorage.getItem('token')
     const handleLogout = () => {
       navigate('/')
     };
@@ -22,7 +23,7 @@ function Home(){
                 <div class="gjs-cell">
                 <div id="ix0m" class="gjs-row">
                     <div id="iagje" class="gjs-cell">
-                    <div id="ie43l">Bienvenido, usuario
+                    <div id="ie43l">Bienvenido (visitante), {username}
                     </div>
                     </div>
                     <div id="ij1vb" class="gjs-cell">
@@ -73,4 +74,4 @@ function Home(){
     )
 }
 
-export {Home}
+export {HomeViewer}
