@@ -44,45 +44,56 @@ function Login(){
     }
 
     return (
-        <>
-          <body id="ii2r">
-  <div class="row" id="i10d">
-    <div class="cell" id="ilv1">
-       <img id='ijcaw' src={logo}/>
-    </div>
-  </div>
-  <div class="row" id="i26g">
-    <div class="cell" id="i8hi">
-      <div class="row" id="iwn8g">
-        <div class="cell" id="ienco">
-          <div id="i8wcy">Inicio de sesión
-          </div>
+         <body id="ii2r">
+  <div id="i10d" class="row">
+    <div id="ilv1" class="cell">
+      <div class="gjs-row" id="i5cs3">
+        <div class="gjs-cell" id="iwo1e">
+          <img id="ijcaw" src={logo}/>
         </div>
-        <form onSubmit={handleLogin}>
-          <div class="cell" id="igcgf">
-            <div class="row" id="iwdgj">
-              <div class="cell" id="ix3e6">
-                <div class="login-label" id="ig1lp">Usuario
-                </div>
-                <input type="text" id="ioi0v" placeholder="Usuario" required class="login-input" onChange={(e) => setUsername(e.target.value)}/>
-              </div>
-              <div class="cell" id="ivtuz">
-                <div class="login-label" id="iduiy">Contraseña
-                </div>
-                <input type="password" placeholder="Contraseña" required id="loginPass" class="login-input" onChange={(e) => setPassword(e.target.value)}/>
-              </div>
-            </div>
-          </div>
-          <button type="submit" id="iid2k">Iniciar sesión</button>
-        </form>
       </div>
     </div>
-    <div class="cell" id="i53ac">
-      <img id="ipq92" src={loginPic}/>
+  </div>
+  <div id="i3o4w" class="gjs-row1">
+    <div id="ira25" class="gjs-cell">
+      <div id="it69l" class="gjs-row1">
+        <div id="ih5bi" class="gjs-cell">
+          <div id="ib1q8">Inicio de sesión
+            <br/>
+          </div>
+        </div>
+      </div>
+      <form onSubmit={handleLogin}>
+      <div id="iz94e" class="gjs-row1">
+        <div class="gjs-cell" id="ilm2j">
+          <div id="ih6m4">Usuario
+          </div>
+          <input type="text" id="iqygw" placeholder="Usuario" onChange={(e) => setUsername(e.target.value)}/>
+        </div>
+      </div>
+      <div id="iv1jg" class="gjs-row1">
+        <div class="gjs-cell">
+          <div id="iqdmx">Contraseña
+          </div>
+          <input type="password" id="ik8a2" placeholder="Contraseña" onChange={(e) => setPassword(e.target.value)}/>
+        </div>
+      </div>
+      <div id="is5ul" class="gjs-row1">
+        <div class="gjs-cell" id="i04xu">
+          <button type="submit" id="i9r1o">Acceder</button>
+        </div>
+      </div>
+      </form>
+    </div>
+    <div id="i221g" class="gjs-cell">
+      <div id="i354b" class="gjs-row1">
+        <div id="i19lt" class="gjs-cell">
+          <img id="ijhjw" src={loginPic}/>
+          </div>
+      </div>
     </div>
   </div>
-</body>
-        </>  
+</body>  
       );
 
 }
