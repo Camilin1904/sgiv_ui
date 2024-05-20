@@ -41,7 +41,7 @@ body, html{
   padding:0;
 }
 .gjs-row{
-  height: 100px;
+  height: 100%;
   width: 80%;
   display:flex;
   justify-content:flex-start;
@@ -148,6 +148,9 @@ body, html{
 }
 @media (max-width: 768px){
   .gjs-row{
+    flex-wrap:wrap;
+  }
+  .gjs-row1{
     flex-wrap:wrap;
   }
 }
