@@ -10,6 +10,10 @@ function HomeSales(){
       navigate('/')
     };
 
+    const toPlanDetails = () =>{
+      navigate('/view-plan-detail');
+    };
+
     return (
         <body id="ii2r">
         <div id="i10d" class="gjs-row">
@@ -29,7 +33,7 @@ function HomeSales(){
                   <div id="ij1vb" class="gjs-cell">
                     <div id="isr62" class="gjs-row">
                       <div class="gjs-cell" id="im38n">
-                        <button type="button" id="ihcz4" class="boton">Ver planes</button>
+                        <button type="button" id="ihcz4" onClick={toPlanDetails} class="boton">Ver planes</button>
                       </div>
                     </div>
                     <div id="ifpef" class="gjs-row">

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './css/vistaClientes.css';
 import logo from './img/logo.png';
 
-function Home(){
+function ViewClients(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
     const handleLogout = () => {
@@ -82,4 +82,4 @@ function Home(){
     )
 }
 
-export {Home}
+export {ViewClients}

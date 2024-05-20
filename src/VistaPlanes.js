@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './css/vistaPlanes.css';
 import logo from './img/logo.png';
 
-function Home(){
+function ViewPlan(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
     const handleLogout = () => {
@@ -81,4 +81,4 @@ function Home(){
     );
 }
 
-export {Home}
+export {ViewPlan}

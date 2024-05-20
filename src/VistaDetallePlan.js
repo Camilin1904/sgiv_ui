@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './css/vistaReservas.css';
 import logo from './img/logo.png';
 
-function Home(){
+function ViewPlanDetail(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
     const handleLogout = () => {
@@ -18,7 +18,7 @@ function Home(){
           <img id="ijcaw" src={logo}/>
         </div>
         <div class="gjs-cell" id="ikt9w">
-          <div id="iah6o2">Reserva
+          <div id="iah6o2">Detalles plan
           </div>
         </div>
       </div>
@@ -81,4 +81,4 @@ function Home(){
     )
 }
 
-export {Home}
+export {ViewPlanDetail}

@@ -1,6 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import './css/homeAdmin.css';
 import logo from './img/logo.png';
+import StatService from './service/StatService';
+import { useEffect, useState } from 'react';
+
+import axios from 'axios';
+
 
 function HomeAdmin(){
     const navigate = useNavigate()
@@ -9,6 +14,75 @@ function HomeAdmin(){
     const handleLogout = () => {
       navigate('/')
     };
+    const [popularDestination, setPopularDestination] = useState('');
+    const [saleNow, setSaleNow] = useState('');
+    const [popPlan, setPopPlan] = useState('');
+    useEffect(() => {
+  
+      const fetchPopDest = async () => {
+        try {
+          const response = await axios.get('http://localhost:9092/stat/pop_dest', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          setPopularDestination(response.data.name);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          //setLoading(false);
+        }
+      };
+
+      const fetchSaleNow = async () => {
+        try {
+          const response = await axios.get('http://localhost:9092/stat/sale_now', {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Access-Control-Allow-Origin': '*',
+            }
+          });
+          setSaleNow(response.data);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          //setLoading(false);
+        }
+      };
+      const fetchPopPlan = async () => {
+        try {
+          const response = await axios.get('http://localhost:9092/stat/pop_plan', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          setPopPlan(response.data.name);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          //setLoading(false);
+        }
+      };
+
+
+      
+      fetchPopDest();
+      fetchSaleNow();
+      fetchPopPlan();
+    }, []);
+
+  
+
+    const toPlans = ()=>{
+      navigate('/view-plans');
+    };
+    const toClients = () => {
+      navigate('/view-clients');
+    };
+    const toPlanDetails = () =>{
+      navigate('/view-plan-detail');
+    };
+    
 
     return (
       <body id="ii2r">
@@ -29,7 +103,7 @@ function HomeAdmin(){
                 <div id="ij1vb" class="gjs-cell">
                   <div id="isr62" class="gjs-row">
                     <div class="gjs-cell">
-                      <button type="button" id="ihcz4" class="boton">Planes asignados</button>
+                      <button type="button" id="ihcz4" onClick={toPlans} class="boton">Planes asignados</button>
                     </div>
                   </div>
                   <div id="ifpef" class="gjs-row">
@@ -39,12 +113,12 @@ function HomeAdmin(){
                   </div>
                   <div id="iq8ek" class="gjs-row">
                     <div class="gjs-cell">
-                      <button type="button" id="iv92q" class="boton">Planes</button>
+                      <button type="button" id="iv92q" onClick={toPlanDetails} class="boton">Planes</button>
                     </div>
                   </div>
                   <div id="iwtke" class="gjs-row">
                     <div class="gjs-cell">
-                      <button type="button" id="if9va" class="boton">Ver clientes</button>
+                      <button type="button" id="if9va" onClick={toClients} class="boton">Ver clientes</button>
                     </div>
                   </div>
                 </div>
@@ -76,7 +150,7 @@ function HomeAdmin(){
                           </div>
                         </div>
                         <div id="ivvm3" class="gjs-cell">
-                          <div id="ir9v2">Insert your text here
+                          <div id="ir9v2">{popularDestination}
                           </div>
                         </div>
                       </div>
@@ -90,7 +164,7 @@ function HomeAdmin(){
                           </div>
                         </div>
                         <div class="gjs-cell">
-                          <div id="iujzv">Insert your text here
+                          <div id="iujzv">{popPlan}
                           </div>
                         </div>
                       </div>
@@ -104,7 +178,7 @@ function HomeAdmin(){
                           </div>
                         </div>
                         <div class="gjs-cell">
-                          <div id="i3f87">Insert your text here
+                          <div id="i3f87">{saleNow}
                           </div>
                         </div>
                       </div>
