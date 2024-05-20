@@ -8,7 +8,6 @@ import { jwtDecode } from "jwt-decode";
 function Login(){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
     const navigate = useNavigate();
     
     const handleLogin = async (event) => {

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import './css/homeAdmin.css';
 import logo from './img/logo.png';
-import StatService from './service/StatService';
+import StatService from '../service/StatService';
 import { useEffect, useState } from 'react';
 
 import axios from 'axios';

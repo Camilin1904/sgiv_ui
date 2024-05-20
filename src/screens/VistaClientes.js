@@ -4,7 +4,6 @@ import logo from './img/logo.png';
 
 function ViewClients(){
     const navigate = useNavigate()
-    const username = localStorage.getItem('username')
     const handleLogout = () => {
       navigate('/')
     };
