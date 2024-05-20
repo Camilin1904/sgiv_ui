@@ -1,13 +1,71 @@
 import { useNavigate } from 'react-router-dom';
 import './css/vistaPlanes.css';
 import logo from './img/logo.png';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function Home(){
+
+function ViewPlan(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
+    const token = localStorage.getItem('token')
+
     const handleLogout = () => {
       navigate('/')
     };
+
+    const [plans, setPlans] = useState([]);
+
+    const [num, setNum] = useState(0);
+
+    useEffect(() =>{
+      const fetchPlans = async () => {
+        try {
+          const response = await axios.post('http://localhost:9092/plan/page_plan', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            },
+            body : {
+              "code":null,
+              "tvm":null,
+              "tvl":null,
+              "clientName":null,
+              "status":"Active",
+              "size":10,
+              "page":1,
+            }
+          });
+          setPlans(response.data);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          //setLoading(false);
+        } 
+      };
+
+      const countPlans = async () => {
+        try {
+          const response = await axios.get('http://localhost:9092/plan/count', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          setNum(response.data.name);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          //setLoading(false);
+        }
+      };
+      
+      countPlans()
+      fetchPlans()
+      
+    })
+
+
+    
+
 
     return (
       <body id="ii2r">
@@ -81,4 +139,4 @@ function Home(){
     );
 }
 
-export {Home}
+export {ViewPlan}
