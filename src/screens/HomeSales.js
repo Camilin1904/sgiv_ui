@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import './css/homeViewer.css';
-import logo from './img/logo.png';
+import '../css/homeViewer.css';
+import logo from '../img/logo.png';
 
 function HomeSales(){
     const navigate = useNavigate()

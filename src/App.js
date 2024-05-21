@@ -4,13 +4,13 @@ import logo from './img/logo.png';
 import loginPic from './img/loginPic.png';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import { Login } from './Login';
+import { Login } from './screens/Login';
 import { HomeAdmin } from './screens/HomeAdmin'
-import { HomeSales } from './HomeSales'
-import { HomeViewer } from './HomeViewer'
-import { ViewClients } from './VistaClientes';
-import { ViewPlan } from './VistaPlanes';
-import { ViewPlanDetail } from './VistaDetallePlan';
+import { HomeSales } from './screens/HomeSales'
+import { HomeViewer } from './screens/HomeViewer'
+import { ViewClients } from './screens/VistaClientes';
+import { ViewPlan } from './screens/VistaPlanes';
+import { ViewPlanDetail } from './screens/VistaDetallePlan';
 
 function App() {
   return(

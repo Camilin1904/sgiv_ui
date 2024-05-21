@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './css/login.css';
-import logo from './img/logo.png';
-import loginPic from './img/loginPic.png';
+import '../css/login.css';
+import logo from '../img/logo.png';
+import loginPic from '../img/loginPic.png';
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 

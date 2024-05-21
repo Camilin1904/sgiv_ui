@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import './css/vistaClientes.css';
-import logo from './img/logo.png';
+import '../css/vistaClientes.css';
+import logo from '../img/logo.png';
 
 function ViewClients(){
     const navigate = useNavigate()

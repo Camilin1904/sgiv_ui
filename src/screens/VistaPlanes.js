@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import './css/vistaPlanes.css';
-import logo from './img/logo.png';
+import '../css/vistaPlanes.css';
+import logo from '../img/logo.png';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 

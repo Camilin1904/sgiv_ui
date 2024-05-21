@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import './css/vistaReservas.css';
-import logo from './img/logo.png';
+import '../css/vistaReservas.css';
+import logo from '../img/logo.png';
 
 function ViewPlanDetail(){
     const navigate = useNavigate()

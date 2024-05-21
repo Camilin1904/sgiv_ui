@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import './css/homeAdmin.css';
+import '../css/homeAdmin.css';
 import logo from './img/logo.png';
 
 function Home(){
