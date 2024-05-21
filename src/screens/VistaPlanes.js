@@ -93,25 +93,17 @@ function ViewPlan() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="gjs-row" id="ilh64g">
+                                    <div className="gjs-row1" id="ilh64g">
                                         <div className="gjs-cell" id="izbov7">
-                                          <div className="gjs-row" id="plan-list">
+                                          <div className="gjs-row1" id="plan-list">
                                               {plans.map((plan) => (
                                                   <PlanItem
                                                       key={plan.id}
-                                                      id={plan.id}
-                                                      name={plan.name}
                                                       code={plan.code}
-                                                      requestDescription={plan.requestDescription}
                                                       numberOfPeople={plan.numberOfPeople}
-                                                      requestDate={new Date(plan.requestDate)}
                                                       startDate={new Date(plan.startDate)}
                                                       endDate={new Date(plan.endDate)}
-                                                      totalValue={plan.totalValue}
-                                                      creationDate={new Date(plan.creationDate)}
-                                                      status={plan.status}
                                                       client={plan.client}
-                                                      user={plan.user}
                                                   />
                                               ))}
                                         </div>

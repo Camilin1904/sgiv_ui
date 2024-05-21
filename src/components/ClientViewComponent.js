@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import '../css/clientViewComponent.css';
 import logo from '../img/logo.png';
 
-function PlanComponent(){
+function ClientComponent(){
 
     return (
         <>
@@ -30,4 +30,4 @@ function PlanComponent(){
     )
 }
 
-export {PlanComponent}
+export {ClientComponent}
