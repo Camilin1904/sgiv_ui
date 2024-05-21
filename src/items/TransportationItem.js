@@ -1,5 +1,5 @@
 import React from 'react';
-import './TransportationItem.css';
+import '../css/items/TransportationItem.css';
 
 function TransportationItem(props) {
     return (
