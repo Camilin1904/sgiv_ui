@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import '../css/planViewComponent.css';
+import '../css/planYReservaViewComponent.css';
 import logo from '../img/logo.png';
 
 function PlanComponent(){
