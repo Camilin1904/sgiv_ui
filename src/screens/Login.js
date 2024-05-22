@@ -48,7 +48,7 @@ function Login(){
     <div id="ilv1" class="cell">
       <div class="gjs-row" id="i5cs3">
         <div class="gjs-cell" id="iwo1e">
-          <img id="ijcaw" src={logo}/>
+          <img id="ijcaw" style={{width:"15%"}} src={logo}/>
         </div>
       </div>
     </div>

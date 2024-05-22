@@ -38,6 +38,7 @@
   #ijcaw{
     color:black;
     width:20%;
+    height: 10px;
   }
   #ipbh{
     height:528px;
@@ -207,11 +208,15 @@
     background-attachment:scroll;
     background-size:auto;
     background-image:linear-gradient(#0159a1 0%, #0159a1 100%);
+
     width:100%;
-    height:50%;
+    height:50px;
     font-size:20px;
     color:#ffffff;
     margin:5% 0px 0px 0px;
+  }
+  .boton:hover{
+    background: #003058;
   }
   @media (max-width: 992px){
     #ijcaw{

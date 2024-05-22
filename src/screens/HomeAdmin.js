@@ -80,7 +80,7 @@ function HomeAdmin(){
       navigate('/view-clients');
     };
     const toPlanDetails = () =>{
-      navigate('/view-plan-detail');
+      navigate('/view-plan-details');
     };
     
 
@@ -88,7 +88,7 @@ function HomeAdmin(){
       <body id="ii2r">
       <div id="i10d" class="gjs-row">
         <div id="ilv1" class="gjs-cell">
-          <img id="ijcaw" src={logo}/>
+          <img id="ijcaw" style={{width:"15%"}} src={logo}/>
           </div>
       </div>
       <div id="ipbh" class="gjs-row">
@@ -101,24 +101,24 @@ function HomeAdmin(){
                   </div>
                 </div>
                 <div id="ij1vb" class="gjs-cell">
-                  <div id="isr62" class="gjs-row">
+                  <div id="isr62" class="gjs-row" style={{height:"15%"}}>
                     <div class="gjs-cell">
-                      <button type="button" id="ihcz4" onClick={toPlans} class="boton">Planes asignados</button>
+                      <button type="button" style={{height:"70%"}} id="ihcz4" onClick={toPlans} class="boton">Planes asignados</button>
                     </div>
                   </div>
-                  <div id="ifpef" class="gjs-row">
-                    <div class="gjs-cell" id="imhol">
-                      <button type="button" id="ix8nz" class="boton">Destino</button>
+                  <div id="ifpef" class="gjs-row"style={{height:"15%"}}>
+                    <div class="gjs-cell" id="imhol" >
+                      <button type="button" id="ix8nz" style={{height:"70%"}}  class="boton">Destino</button>
                     </div>
                   </div>
-                  <div id="iq8ek" class="gjs-row">
-                    <div class="gjs-cell">
-                      <button type="button" id="iv92q" onClick={toPlanDetails} class="boton">Planes</button>
+                  <div id="iq8ek" class="gjs-row"style={{height:"15%"}}>
+                    <div class="gjs-cell" >
+                      <button type="button" id="iv92q"style={{height:"70%"}} onClick={toPlanDetails} class="boton">Planes</button>
                     </div>
                   </div>
-                  <div id="iwtke" class="gjs-row">
-                    <div class="gjs-cell">
-                      <button type="button" id="if9va" onClick={toClients} class="boton">Ver clientes</button>
+                  <div id="iwtke" class="gjs-row" style={{height:"15%"}}>
+                    <div class="gjs-cell" >
+                      <button type="button" id="if9va" style={{height:"70%"}}onClick={toClients} class="boton">Ver clientes</button>
                     </div>
                   </div>
                 </div>
@@ -135,7 +135,7 @@ function HomeAdmin(){
                           </div>
                         </div>
                         <div id="il5hs" class="gjs-cell">
-                          <button type="button" id="ibuui">Detalles</button>
+                          <button type="button" class="boton" id="ibuui">Detalles</button>
                         </div>
                       </div>
                     </div>

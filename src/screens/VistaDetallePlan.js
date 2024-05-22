@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import '../css/vistaReservas.css';
 import logo from '../img/logo.png';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { PlanDetailItem } from '../items/PlanDetailItem';
 
 function ViewPlanDetail(){
     const navigate = useNavigate()
@@ -8,6 +11,61 @@ function ViewPlanDetail(){
     const handleLogout = () => {
       navigate('/')
     };
+
+
+    const [planDetails, setPlanDetails] = useState([]);
+    const [num, setNum] = useState(0);
+    const token = localStorage.getItem('token');
+
+    useEffect(() => {
+        const fetchPlans = async () => {
+            try {
+                const response = await axios.post(
+                    'http://localhost:9092/plan_detail/page_plan_detail',
+                    {
+                        name: null,
+                        daysUpper: null,
+                        daysLower: null,
+                        nightsUpper: null,
+                        nightsLower: null,
+                        valueUpper: null,
+                        valueLower: null,
+                        status: 'Active',
+                        size: 10,
+                        page: 0,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
+                console.log(response)
+                setPlanDetails(response.data.content);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        const countPlans = async () => {
+            try {
+                const response = await axios.get('http://localhost:9092/plan_detail/count', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                setNum(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        countPlans();
+        fetchPlans();
+    }, [token]);
+
+
 
     return (
         <body id="ii2r">
@@ -47,6 +105,13 @@ function ViewPlanDetail(){
               </div>
               <div class="gjs-row" id="ilh64g">
                 <div class="gjs-cell" id="izbov7">
+                <div className="gjs-row1" id="plan-list">
+                                              {planDetails.map((plan) => (
+                                                  <PlanDetailItem
+                                                  props = {plan}
+                                                  />
+                                              ))}
+                                        </div>
                 </div>
               </div>
               <div class="gjs-row" id="i39ss1">
