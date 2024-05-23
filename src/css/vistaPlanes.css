@@ -1,15 +1,12 @@
-* {
-  box-sizing: border-box;
-}
+
 body {
   margin: 0;
+  display: flexbox;
 }
 *{
   box-sizing:border-box;
 }
-body{
-  margin:0;
-}
+
 .gjs-row{
   display:flex;
   justify-content:flex-start;
@@ -102,3 +99,19 @@ body{
   width: 100%;
 }
 
+
+#ilh64g{
+  object-fit:fill;
+}
+
+#ipbh{
+  height:100vh;
+}
+
+#igqg{
+  padding: 0%;
+}
+
+#ilh64g{
+  height: 100vh;
+}

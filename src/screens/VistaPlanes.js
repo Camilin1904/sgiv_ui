@@ -72,9 +72,9 @@ function ViewPlan() {
                     </div>
                 </div>
             </div>
-            <div id="ipbh" className="gjs-row">
+            <div id="ipbh" style={{height:"85vh"}} className="gjs-row">
                 <div className="gjs-cell">
-                    <div id="igqg" className="gjs-row">
+                    <div id="igqg"className="gjs-row">
                         <div id="ikv4" className="gjs-cell">
                             <div id="ilxmp" className="gjs-row">
                                 <div id="i1axm" className="gjs-cell">
@@ -93,7 +93,7 @@ function ViewPlan() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="gjs-row1" id="ilh64g">
+                                    <div className="gjs-row1" id="ilh64g" style={{height: '80%', overflowY:'scroll'}}>
                                         <div className="gjs-cell" id="izbov7">
                                           <div className="gjs-row1" id="plan-list">
                                               {plans.map((plan) => (
@@ -109,32 +109,35 @@ function ViewPlan() {
                                         </div>
                                         </div>
                                     </div>
-                                    <div className="gjs-row" id="i39ss1">
-                                        <div className="gjs-cell" id="istsko">
-                                            <div className="gjs-row" id="iu7isy">
-                                                <div className="gjs-cell" id="i6hi6h">
-                                                    <button type="button" id="if0ynj">Anterior</button>
-                                                </div>
-                                                <div className="gjs-cell" id="ixsnst">
-                                                    <div className="gjs-row" id="i89pat">
-                                                        <div className="gjs-cell" id="ihtxki">
-                                                            <input type="text" id="i46s8v" />
-                                                        </div>
-                                                        <div className="gjs-cell" id="i9i75f">
-                                                            <button type="button" id="inpm0j"></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="gjs-cell" id="izlfvz">
-                                                    <button type="button" id="isdsj6">Siguiente</button>
-                                                </div>
+                                    
+                                </div>
+                            </div>
+                            <div className="gjs-row" id="i39ss1">
+                            <div className="gjs-cell" id="istsko">
+                                <div className="gjs-row" id="iu7isy">
+                                    <div className="gjs-cell" id="i6hi6h">
+                                        <button type="button" id="if0ynj">Anterior</button>
+                                    </div>
+                                    <div className="gjs-cell" id="ixsnst">
+                                        <div className="gjs-row" id="i89pat">
+                                            <div className="gjs-cell" id="ihtxki">
+                                                <input type="text" id="i46s8v" />
+                                            </div>
+                                            <div className="gjs-cell" id="i9i75f">
+                                                <button type="button" id="inpm0j"></button>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div className="gjs-cell" id="izlfvz">
+                                        <button type="button" id="isdsj6">Siguiente</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        
                     </div>
+                    
                 </div>
             </div>
         </div>

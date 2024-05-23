@@ -1,19 +1,53 @@
 import React from 'react';
 import '../css/items/ClientItem.css';
 
-function ClientItem(props) {
+function ClientItem(p) {
+    const props = p.props;
+
     return (
-      <li className='ClientItem'>
-        <h2 className='ClientItem-name'>{props.firstName} {props.lastName} {props.secondLastName}</h2>
-        <p className='ClientItem-id'>ID: {props.id}</p>
-        <p className='ClientItem-identificationNumber'>ID Number: {props.identificationNumber}</p>
-        <p className='ClientItem-phone'>Phone: {props.phone1}, {props.phone2}</p>
-        <p className='ClientItem-email'>Email: {props.email}</p>
-        <p className='ClientItem-birthDate'>Birth Date: {props.birthDate.toDateString()}</p>
-        <p className='ClientItem-gender'>Gender: {props.gender}</p>
-        <p className='ClientItem-status'>Status: {props.status}</p>
-        <p className='ClientItem-identificationType'>Identification Type: {props.identificationType.name}</p>
-      </li>
+<>
+<div class="gjs-row" id="ibrpca" style={{height:'11vh'}}>
+  <div class="gjs-cell" id="i61jk8">
+    <div id="iwqlh" className='PlanItem-code'>  {props.firstName} {props.lastName} {props.secondLastName}
+    </div>
+  </div>
+  <div class="gjs-cell">
+    <div id="iymgd" class="gjs-row">
+      <table>
+        <td>
+          <tr>
+            <div id="ipzs3" classname="PlanItem-startDate">ID Number: {props.identificationNumber}
+            </div>
+          </tr>
+          <tr>
+            <div id="izkt1" classname="PlanItem-client">Birth Date: {props.birthDate}
+            </div>
+          </tr>
+        </td>
+        <td>
+          <tr>
+            <div id="itoty" classname="PlanItem-endDate">Email: {props.email}
+            </div>
+          </tr>
+          <tr>
+            <div id="iqit6" classname="PlanItem-numberOfPeople">Gender: {props.gender}
+            </div>
+          </tr>
+        </td>
+      </table>
+    </div>
+  </div>
+  <div class="gjs-cell" id="i0i4xc">
+    <div id="imv6n-3" class="gjs-cell">
+      <div id="ihhc9-3" class="gjs-cell1">
+        <button type="button" id="ih3zn-3" style={{width:'100%', marginBottom:'2vh', height: '3vh'}}>Mas Info</button>
+      </div>
+      <button type="button" id="idwt7-3" style={{width:'100%', height: '3vh'}}>Editar</button>
+    </div>
+  </div>
+</div>
+<br />
+</>
     );
 }
 

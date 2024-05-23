@@ -153,7 +153,6 @@
     min-height:50%;
   }
   #ipzs3{
-    padding:10px;
     background-repeat:repeat;
     background-position:left top;
     background-attachment:scroll;
@@ -161,13 +160,13 @@
     background-image:none;
   }
   #itoty{
-    padding:10px;
+
   }
   #izkt1{
-    padding:10px;
+
   }
   #iqit6{
-    padding:10px;
+
   }
   #iobqv{
     min-height:100%;
@@ -207,9 +206,6 @@
     background-size:auto;
     background-image:linear-gradient(white 0%, white 100%);
     border-radius:0px 15px 15px 0px;
-  }
-  #PlanItem-client{
-    margin-bottom: 100%;
   }
   @media (max-width: 992px){
     #ijcaw{
