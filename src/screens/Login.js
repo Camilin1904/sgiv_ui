@@ -4,6 +4,8 @@ import logo from '../img/logo.png';
 import loginPic from '../img/loginPic.png';
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { TopBar } from '../items/TopBar';
+
 
 function Login(){
     const [username, setUsername] = useState('');
@@ -43,16 +45,10 @@ function Login(){
     }
 
     return (
-         <body id="ii2r">
-  <div id="i10d" class="row">
-    <div id="ilv1" class="cell">
-      <div class="gjs-row" id="i5cs3">
-        <div class="gjs-cell" id="iwo1e">
-          <img id="ijcaw" style={{width:"15%"}} src={logo}/>
-        </div>
-      </div>
-    </div>
-  </div>
+        <body id="ii2r">
+          
+        <TopBar title={''} />
+
   <div id="i3o4w" class="gjs-row1">
     <div id="ira25" class="gjs-cell">
       <div id="it69l" class="gjs-row1">

@@ -5,7 +5,7 @@ function PlanDetailItem(obj) {
   const props = obj.props;
     return (
       <>
-      <div class="gjs-row" id="ibrpca" style={{height:'11vh'}}>
+      <div class="gjs-row" id="ibrpca" style={{height:'13vh'}}>
         <div class="gjs-cell" id="i61jk8">
           <div id="iwqlh" className='PlanItem-code'>  {props.name} 
           </div>
@@ -15,22 +15,20 @@ function PlanDetailItem(obj) {
             <table>
               <td>
                 <tr>
-                  <div id="ipzs3" classname="PlanItem-startDate">Number of Days: {props.numberOfDays}
-                  </div>
+                  Number of Days: {props.numberOfDays}
                 </tr>
+                <br/>
                 <tr>
-                  <div id="izkt1" classname="PlanItem-client">Number of Nights: {props.numberOfNights}
-                  </div>
+                  Number of Nights: {props.numberOfNights}
                 </tr>
               </td>
               <td>
                 <tr>
-                  <div id="itoty" classname="PlanItem-endDate">Destination: {props.destination.name}
-                  </div>
+                  Destination: {props.destination.name}
                 </tr>
+                <br/>
                 <tr>
-                  <div id="iqit6" classname="PlanItem-numberOfPeople">value: {props.value}
-                  </div>
+                  value: {props.value}
                 </tr>
               </td>
             </table>

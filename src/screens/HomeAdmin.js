@@ -3,7 +3,7 @@ import '../css/homeAdmin.css';
 import logo from '../img/logo.png';
 import StatService from '../service/StatService';
 import { useEffect, useState } from 'react';
-
+import { TopBar } from '../items/TopBar';
 import axios from 'axios';
 
 
@@ -86,11 +86,7 @@ function HomeAdmin(){
 
     return (
       <body id="ii2r">
-      <div id="i10d" class="gjs-row">
-        <div id="ilv1" class="gjs-cell">
-          <img id="ijcaw" style={{width:"15%"}} src={logo}/>
-          </div>
-      </div>
+      <TopBar title={''} />
       <div id="ipbh" class="gjs-row">
         <div class="gjs-cell">
           <div id="igqg" class="gjs-row">

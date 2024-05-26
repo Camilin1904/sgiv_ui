@@ -4,7 +4,7 @@ import '../css/items/PlanItem.css';
 function PlanItem(props) {
     return (
       <>
-  <div class="gjs-row" id="ibrpca" style={{height:'11vh'}}>
+  <div class="gjs-row" id="ibrpca" style={{height:'13vh'}}>
     <div class="gjs-cell" id="i61jk8">
       <div id="iwqlh" className='PlanItem-code'>  {props.code} 
       </div>
@@ -13,23 +13,21 @@ function PlanItem(props) {
       <div id="iymgd" class="gjs-row">
         <table>
           <td>
-            <tr>
-              <div id="ipzs3" classname="PlanItem-startDate">Start Date: {props.startDate.toDateString()}
-              </div>
+            <tr style={{height:'fit-content'}}>
+              Start Date: {props.startDate.toDateString()}
             </tr>
+            <br />
             <tr>
-              <div id="izkt1" classname="PlanItem-client">Client: {props.client.firstName} {props.client.lastName}
-              </div>
+              Client: {props.client.firstName} {props.client.lastName}
             </tr>
           </td>
           <td>
             <tr>
-              <div id="itoty" classname="PlanItem-endDate">End Date: {props.endDate.toDateString()}
-              </div>
+              End Date: {props.endDate.toDateString()}
             </tr>
+            <br />
             <tr>
-              <div id="iqit6" classname="PlanItem-numberOfPeople">Number of People: {props.numberOfPeople}
-              </div>
+              Number of People: {props.numberOfPeople}
             </tr>
           </td>
         </table>

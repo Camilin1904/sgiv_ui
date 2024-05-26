@@ -4,6 +4,7 @@ import logo from '../img/logo.png';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PlanDetailItem } from '../items/PlanDetailItem';
+import { TopBar } from '../items/TopBar';
 
 function ViewPlanDetail(){
     const navigate = useNavigate()
@@ -69,18 +70,8 @@ function ViewPlanDetail(){
 
     return (
 <div id="ii2r">
-            <div id="i10d" className="gjs-row">
-                <div id="ilv1" className="gjs-cell">
-                    <div className="gjs-row" id="ibzy2">
-                        <div className="gjs-cell" id="i526g">
-                            <img id="ijcaw" src={logo} alt="Logo" />
-                        </div>
-                        <div className="gjs-cell" id="ikt9w">
-                            <div id="iah6o2">Detalles Plan</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<TopBar title={'Detalles Plan'} />
+
             <div id="ipbh" style={{height:"85vh"}} className="gjs-row">
                 <div className="gjs-cell">
                     <div id="igqg"className="gjs-row">

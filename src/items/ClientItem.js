@@ -16,22 +16,20 @@ function ClientItem(p) {
       <table>
         <td>
           <tr>
-            <div id="ipzs3" classname="PlanItem-startDate">ID Number: {props.identificationNumber}
-            </div>
+            ID Number: {props.identificationNumber}
           </tr>
+          <br/>
           <tr>
-            <div id="izkt1" classname="PlanItem-client">Birth Date: {props.birthDate}
-            </div>
+            Birth Date: {props.birthDate}
           </tr>
         </td>
         <td>
           <tr>
-            <div id="itoty" classname="PlanItem-endDate">Email: {props.email}
-            </div>
+            Email: {props.email}
           </tr>
+          <br/>
           <tr>
-            <div id="iqit6" classname="PlanItem-numberOfPeople">Gender: {props.gender}
-            </div>
+            Gender: {props.gender}
           </tr>
         </td>
       </table>

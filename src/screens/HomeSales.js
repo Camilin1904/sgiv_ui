@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import '../css/homeViewer.css';
 import logo from '../img/logo.png';
+import { TopBar } from '../items/TopBar';
+
 
 function HomeSales(){
     const navigate = useNavigate()
@@ -16,11 +18,7 @@ function HomeSales(){
 
     return (
         <body id="ii2r">
-        <div id="i10d" class="gjs-row">
-          <div id="ilv1" class="gjs-cell">
-            <img id="ijcaw" src={logo}/>
-            </div>
-        </div>
+        <TopBar title={''} />
         <div id="ipbh" class="gjs-row">
           <div class="gjs-cell">
             <div id="igqg" class="gjs-row">
