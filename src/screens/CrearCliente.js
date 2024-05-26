@@ -1,156 +1,249 @@
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/crearCliente.css';
-import logo from './img/logo.png';
-import StatService from './service/StatService';
-import { useEffect, useState } from 'react';
+import { TopBar } from '../items/TopBar';
+import axios from 'axios';
 
-function HomeAdmin(){
-    const navigate = useNavigate()
-    const username = localStorage.getItem('username')
-    const token = localStorage.getItem('token')
+function CrearCliente() {
+    const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+
     const handleLogout = () => {
-      navigate('/')
+        navigate('/');
     };
 
-    const [popularDestination, setPopularDestination] = useState('');
-    useEffect(()=>{
-      fetch ('http://localhost:9092/stat/pop_dest',{
-        method : 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('token'),
-          'Access-Control-Allow-Origin': 'http://localhost:9092'
-        }
-        
-      }).then(response => response.text())
-      .then(response =>{
-        const res = JSON.parse(response);
-        setPopularDestination(res.name);
-      })
-    })
-    
+    const [name, setName] = useState('');
+    const [lastname, setLastname] = useState('');
+    const [gender, setGender] = useState('');
+    const [idNum, setIdNum] = useState('');
+    const [phone1, setPhone1] = useState(''); 
+    const [phone2, setPhone2] = useState('');
+    const [email, setEmail] = useState('');
+    const [birthDate, setBirthDate] = useState(null);
+    const [user, setUser] = useState(null);
+    const [idTypes, setIdTypes] = useState([]);
+    const [idType, setIdType] = useState(null);
+
+
+    useEffect(() => {
+        const fetchIdTypes = async () => {
+            await axios.get('http://localhost:9092/users/idTypes', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(response => response.data)
+              .then(data => setIdTypes(data));
+        };
+        const userFetch =async ()=>{ 
+          await axios.get('http://localhost:9092/users/get', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response => {setUser(response.data)});}
+        userFetch();
+        fetchIdTypes();
+    }, [token]);
+
+    function crearCliente(e) {
+      console.log(idType)
+        e.preventDefault();
+
+        const createC = async() => {
+          await axios.post('http://localhost:9092/client/create', {
+            id: null,
+            identificationNumber: idNum,
+            identificationType: idType,
+            firstName: name,
+            lastName: lastname,
+            secondLastName: null,
+            phone1: phone1,
+            phone2: phone2,
+            email: email,
+            birthDate: birthDate,
+            gender: gender,
+            'user': user,
+            status:'Active'
+        });}
+        createC();
+
+    }
 
     return (
-        <body id="ii2r">
-        <div id="i10d" class="gjs-row">
-          <div id="ilv1" class="gjs-cell">
-            <div id="ibzy2" class="gjs-row">
-              <div id="i526g" class="gjs-cell">
-                <img id="ijcaw" src={logo} />
+        <div id="ii2r">
+            <TopBar title={'Registrar Cliente'} />
+            <div id="ipbh" className="gjs-row">
+                <div id="iw09o" className="gjs-cell">
+                    <div id="igqg" className="gjs-row">
+                        <div id="is6bi" className="gjs-row">
+                            <form onSubmit={crearCliente}>
+                                <div id="ib7yb" className="gjs-cell">
+                                    <div id="ijwtz" className="gjs-row" style={{height: '10vh'}}>
+                                        <div id="ioj32" className="gjs-cell" style={{height: '10vh'}}>
+                                            <div id="ia4mh">Ingrese la información del cliente</div>
+                                        </div>
+                                        <div id="iqf2j" className="gjs-cell" style={{height: '10vh'}}>
+                                            <button type="submit" id="in3fl">Registrar</button>
+                                        </div>
+                                    </div>
+                                    <div id="iqx84" className="gjs-row" style={{height: '30vh'}}>
+                                        <div className="gjs-cell" style={{height: '30vh'}}>
+                                            <div id="igaf4" className="gjs-row" style={{height: '30vh'}}>
+                                                <div id="i0cl5" className="gjs-cell">
+                                                    <div id="ityxu" className="texto">Nombre</div>
+                                                    <input
+                                                        type="text"
+                                                        id="ioow3"
+                                                        required
+                                                        onChange={e => setName(e.target.value)}
+                                                        placeholder="Nombre"
+                                                        className="texto"
+                                                    />
+                                                </div>
+                                                <div id="i0a0k" className="gjs-cell">
+                                                    <div id="iv07cp" className="texto">Apellidos</div>
+                                                    <input
+                                                        type="text"
+                                                        id="ixeik5"
+                                                        required
+                                                        onChange={e => setLastname(e.target.value)}
+                                                        placeholder="Apellidos"
+                                                        className="texto"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="gjs-cell" style={{height: '30vh'}}>
+                                            <div id="i56sl" className="gjs-row" style={{height: '30vh'}}>
+                                                <div className="gjs-cell" id="ime4x">
+                                                    <div id="iddaz" className="textr">Sexo</div>
+                                                    <div id="i03df" className="gjs-row">
+                                                        <div id="ioqx9" className="gjs-cell">
+                                                            <div id="ik3xf" className="gjs-row">
+                                                                <div id="ivpjv" className="gjs-cell">
+                                                                    <input
+                                                                        type="radio"
+                                                                        id="iz7d4m"
+                                                                        required
+                                                                        onChange={() => setGender('Male')}
+                                                                        value="Male"
+                                                                        name="gender"
+                                                                    />
+                                                                </div>
+                                                                <div id="iu0xk" className="gjs-cell">
+                                                                    <div id="ifpuja">Masculino</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="i9u9j" className="gjs-cell">
+                                                            <div id="i9gva4" className="gjs-row">
+                                                                <div id="iqpndx" className="gjs-cell">
+                                                                    <input
+                                                                        type="radio"
+                                                                        id="igjjqz"
+                                                                        required
+                                                                        onChange={() => setGender('Female')}
+                                                                        value="Female"
+                                                                        name="gender"
+                                                                    />
+                                                                </div>
+                                                                <div id="i90ol2" className="gjs-cell">
+                                                                    <div id="imqp0p">Femenino</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="ie5os" className="gjs-cell">
+                                                    <div id="ihiyv4" className="textr">Identificación</div>
+                                                    <input
+                                                        type="text"
+                                                        id="ilrxql"
+                                                        required
+                                                        placeholder="Identificación"
+                                                        onChange={e => {setIdNum(e.target.value)}}
+                                                        className="textr"
+                                                    />
+                                                </div>
+                                                <div id="inbik" className="gjs-cell">
+                                                    <div id="i0g2gm" className="textr">Tipo de Identificación</div>
+                                                    <select
+                                                        required
+                                                        onChange={e => {
+                                                            const selectedType = idTypes.find(type => type.name === e.target.value);
+                                                            setIdType(selectedType);
+                                                        }}
+                                                        className="textr"
+                                                    >
+                                                        <option value="" disabled selected>Seleccione un tipo</option>
+                                                        {idTypes.map((type, index) => (
+                                                            <option key={index} value={type.name}>{type.name}</option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="iu9ej" className="gjs-row">
+                                        <div id="ip4cd" className="gjs-cell" style={{height: '30vh'}}>
+                                            <div id="igtxh" className="gjs-row" style={{height: '30vh'}}>
+                                                <div id="iyudr" className="gjs-cell">
+                                                    <div id="ig9af4" className="texto">Teléfono 1</div>
+                                                    <input
+                                                        type="text"
+                                                        id="is1wpt"
+                                                        required
+                                                        placeholder="Teléfono 1"
+                                                        onChange={e => setPhone1(e.target.value)}
+                                                        className="texto"
+                                                    />
+                                                </div>
+                                                <div id="i2uhv" className="gjs-cell">
+                                                    <div id="i40cuc" className="texto">Teléfono 2</div>
+                                                    <input
+                                                        type="text"
+                                                        id="ifa1p2"
+                                                        placeholder="Teléfono 2"
+                                                        onChange={e => setPhone2(e.target.value)}
+                                                        className="texto"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="gjs-cell" style={{height: '30vh'}}>
+                                            <div id="i9fb5" className="gjs-row">
+                                                <div className="gjs-cell" id="i6587">
+                                                    <div id="iiz877" className="textr">Correo</div>
+                                                    <input
+                                                        type="text"
+                                                        id="io12dg"
+                                                        required
+                                                        onChange={e => setEmail(e.target.value)}
+                                                        placeholder="Correo"
+                                                        className="textr"
+                                                    />
+                                                </div>
+                                                <div id="inbik" className="gjs-cell">
+                                                    <div id="i0g2gm" className="textr">Fecha de nacimiento</div>
+                                                    <input
+                                                        type="date"
+                                                        id="ifd1h5"
+                                                        required
+                                                        onChange={e => setBirthDate(e.target.value)}
+                                                        placeholder="Fecha de nacimiento"
+                                                        className="textr"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-              <div id="ikt9w" class="gjs-cell">
-                <div id="iah6o2">Registrar Cliente
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-        <div id="ipbh" class="gjs-row">
-          <div id="iw09o" class="gjs-cell">
-            <div id="igqg" class="gjs-row">
-              <div id="is6bi" class="gjs-row">
-                <div id="ib7yb" class="gjs-cell">
-                  <div id="ijwtz" class="gjs-row">
-                    <div id="ioj32" class="gjs-cell">
-                      <div id="ia4mh">Ingrese la informacion del cliente
-                      </div>
-                    </div>
-                    <div id="iqf2j" class="gjs-cell">
-                      <button type="button" id="in3fl">Registrar</button>
-                    </div>
-                  </div>
-                  <div id="iqx84" class="gjs-row">
-                    <div class="gjs-cell">
-                      <div id="igaf4" class="gjs-row">
-                        <div id="i0cl5" class="gjs-cell">
-                          <div id="ityxu" class="texto">Nombre
-                          </div>
-                          <input type="text" id="ioow3" placeholder="Nombre" class="texto"/>
-                        </div>
-                        <div id="i0a0k" class="gjs-cell">
-                          <div id="iv07cp" class="texto">Apellidos
-                          </div>
-                          <input type="text" id="ixeik5" placeholder="Apellidos" class="texto"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="gjs-cell">
-                      <div id="i56sl" class="gjs-row">
-                        <div class="gjs-cell" id="ime4x">
-                          <div id="iddaz" class="textr">Sexo
-                          </div>
-                          <div id="i03df" class="gjs-row">
-                            <div id="ioqx9" class="gjs-cell">
-                              <div id="ik3xf" class="gjs-row">
-                                <div id="ivpjv" class="gjs-cell">
-                                  <input type="radio" id="iz7d4m" value="" name="Masculino"/>
-                                </div>
-                                <div id="iu0xk" class="gjs-cell">
-                                  <div id="ifpuja">Masculino
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div id="i9u9j" class="gjs-cell">
-                              <div id="i9gva4" class="gjs-row">
-                                <div id="iqpndx" class="gjs-cell">
-                                  <input type="radio" id="igjjqz" name="Femenino"/>
-                                </div>
-                                <div id="i90ol2" class="gjs-cell">
-                                  <div id="imqp0p">Femenino
-                                    <br/>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div id="ie5os" class="gjs-cell">
-                          <div id="ihiyv4" class="textr">Identificación
-                            <br/>
-                          </div>
-                          <input type="text" id="ilrxql" placeholder="Identificacion" class="textr"/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="iu9ej" class="gjs-row">
-                    <div id="ip4cd" class="gjs-cell">
-                      <div id="igtxh" class="gjs-row">
-                        <div id="iyudr" class="gjs-cell">
-                          <div id="ig9af4" class="texto">Telefono 1
-                          </div>
-                          <input type="text" id="is1wpt" placeholder="Telefono 1" class="texto"/>
-                        </div>
-                        <div id="i2uhv" class="gjs-cell">
-                          <div id="i40cuc" class="texto">Telefono 2
-                          </div>
-                          <input type="text" id="ifa1p2" placeholder="Telefono 2" class="texto"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="gjs-cell">
-                      <div id="i9fb5" class="gjs-row">
-                        <div class="gjs-cell" id="i6587">
-                          <div id="iiz877" class="textr">Correo
-                          </div>
-                          <input type="text" id="io12dg" placeholder="Correo" class="textr"/>
-                        </div>
-                        <div id="inbik" class="gjs-cell">
-                          <div id="i0g2gm" class="textr">Fecha de nacimiento
-                          </div>
-                          <input type="text" id="ifd1h5" placeholder="Fecha de nacimiento" class="textr"/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </body>
     );
 }
 
-export {HomeAdmin}
+export { CrearCliente };
