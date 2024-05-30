@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import '../css/homeAdmin.css';
-import logo from './img/logo.png';
+import { TopBar } from '../items/TopBar';
 
 function Home(){
     const navigate = useNavigate()
@@ -11,11 +11,7 @@ function Home(){
 
     return (
         <body id="ii2r">
-        <div id="i10d" class="gjs-row">
-          <div id="ilv1" class="gjs-cell">
-            <img id="ijcaw" src={logo}/>
-             </div>
-        </div>
+        <TopBar title={'Registrar Cliente'} />
         <div id="ipbh" class="gjs-row">
           <div class="gjs-cell">
             <div id="igqg" class="gjs-row">

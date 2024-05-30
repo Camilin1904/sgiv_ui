@@ -6,13 +6,16 @@ import axios from 'axios';
 import { ClientItem } from '../items/ClientItem';
 import { TopBar } from '../items/TopBar';
 
+function ViewClients() {
+    const navigate = useNavigate();
 
-function ViewClients(){
-    const navigate = useNavigate()
     const handleLogout = () => {
-      navigate('/')
+        navigate('/');
     };
 
+    const handleCreateClient = () => {
+        navigate('/create-client');
+    };
 
     const [clients, setClients] = useState([]);
     const [num, setNum] = useState(0);
@@ -38,7 +41,7 @@ function ViewClients(){
                         },
                     }
                 );
-                console.log(response.data)
+                console.log(response.data);
                 setClients(response.data);
             } catch (error) {
                 console.log(error);
@@ -62,13 +65,12 @@ function ViewClients(){
         fetchClients();
     }, [token]);
 
-
     return (
-<div id="ii2r">
+        <div id="ii2r">
             <TopBar title={'Clientes'} />
-            <div id="ipbh" style={{height:"85vh"}} className="gjs-row">
+            <div id="ipbh" style={{ height: "85vh" }} className="gjs-row">
                 <div className="gjs-cell">
-                    <div id="igqg"className="gjs-row">
+                    <div id="igqg" className="gjs-row">
                         <div id="ikv4" className="gjs-cell">
                             <div id="ilxmp" className="gjs-row">
                                 <div id="i1axm" className="gjs-cell">
@@ -82,55 +84,53 @@ function ViewClients(){
                                                     <button type="button" id="i1aomg"></button>
                                                 </div>
                                                 <div className="gjs-cell" id="ivtoj3">
-                                                    <button type="button" id="ivslaq">Crear</button>
+                                                    <button type="button" id="ivslaq" onClick={handleCreateClient}>Crear</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="gjs-row1" id="ilh64g" style={{height: '80%', overflowY:'scroll'}}>
+                                    <div className="gjs-row1" id="ilh64g" style={{ height: '80%', overflowY: 'scroll' }}>
                                         <div className="gjs-cell" id="izbov7">
-                                          <div className="gjs-row1" id="plan-list">
-                                            {clients.map((client) => (
+                                            <div className="gjs-row1" id="plan-list">
+                                                {clients.map((client) => (
                                                     <ClientItem
-                                                      props = {client}
+                                                        key={client.id} // Assuming client object has an 'id' property
+                                                        props={client}
                                                     />
                                                 ))}
-                                        </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                             <div className="gjs-row" id="i39ss1">
-                            <div className="gjs-cell" id="istsko">
-                                <div className="gjs-row" id="iu7isy">
-                                    <div className="gjs-cell" id="i6hi6h">
-                                        <button type="button" id="if0ynj">Anterior</button>
-                                    </div>
-                                    <div className="gjs-cell" id="ixsnst">
-                                        <div className="gjs-row" id="i89pat">
-                                            <div className="gjs-cell" id="ihtxki">
-                                                <input type="text" id="i46s8v" />
-                                            </div>
-                                            <div className="gjs-cell" id="i9i75f">
-                                                <button type="button" id="inpm0j"></button>
+                                <div className="gjs-cell" id="istsko">
+                                    <div className="gjs-row" id="iu7isy">
+                                        <div className="gjs-cell" id="i6hi6h">
+                                            <button type="button" id="if0ynj">Anterior</button>
+                                        </div>
+                                        <div className="gjs-cell" id="ixsnst">
+                                            <div className="gjs-row" id="i89pat">
+                                                <div className="gjs-cell" id="ihtxki">
+                                                    <input type="text" id="i46s8v" />
+                                                </div>
+                                                <div className="gjs-cell" id="i9i75f">
+                                                    <button type="button" id="inpm0j"></button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="gjs-cell" id="izlfvz">
-                                        <button type="button" id="isdsj6">Siguiente</button>
+                                        <div className="gjs-cell" id="izlfvz">
+                                            <button type="button" id="isdsj6">Siguiente</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        
                     </div>
-                    
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export {ViewClients}
+export { ViewClients };

@@ -12,6 +12,7 @@ import { ViewClients } from './screens/VistaClientes';
 import { ViewPlan } from './screens/VistaPlanes';
 import { ViewPlanDetail } from './screens/VistaDetallePlan';
 import { CrearCliente } from './screens/CrearCliente';
+import { crearDetallePlan } from './screens/CrearPlan';
 
 function App() {
   return(
@@ -24,6 +25,7 @@ function App() {
       <Route path='/view-plans' element={<ViewPlan/>} />
       <Route path='/view-plan-details' element={<ViewPlanDetail/>} />
       <Route path='/create-client' element={<CrearCliente/>} />
+      <Route path='/create-plan-detail' element={<crearDetallePlan/>} />
 
     </Routes>
   )
