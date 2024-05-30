@@ -49,21 +49,29 @@ function CrearCliente() {
         e.preventDefault();
 
         const createC = async() => {
-          await axios.post('http://localhost:9092/client/create', {
-            id: null,
-            identificationNumber: idNum,
-            identificationType: idType,
-            firstName: name,
-            lastName: lastname,
-            secondLastName: null,
-            phone1: phone1,
-            phone2: phone2,
-            email: email,
-            birthDate: birthDate,
-            gender: gender,
-            'user': user,
-            status:'Active'
-        });}
+            const clientData = {
+              id: null,
+              identificationNumber: idNum,
+              identificationType: idType,
+              firstName: name,
+              lastName: lastname,
+              secondLastName: "",
+              phone1: phone1,
+              phone2: phone2,
+              email: email,
+              birthDate: birthDate,
+              gender: gender,
+              user: user,
+              status: 'Active'
+            };
+          
+          
+            await axios.post('http://localhost:9092/client/create', clientData, {
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            });
+          };
         createC();
 
     }
