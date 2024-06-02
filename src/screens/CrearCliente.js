@@ -73,6 +73,7 @@ function CrearCliente() {
             });
           };
         createC();
+        navigate('/view-clients')
 
     }
 
