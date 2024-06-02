@@ -16,6 +16,8 @@ import { crearDetallePlan } from './screens/CrearPlan';
 import { CreatePlan } from './screens/CrearPlan';
 import { ViewDestinations } from './screens/VistaDestinos';
 import { ViewHotels } from './screens/VistaHoteles';
+import { CrearTransporte } from './screens/CrearTransporte';
+import { CrearComida } from './screens/CrearComida';
 
 function App() {
   return(
@@ -31,7 +33,8 @@ function App() {
       <Route path='/create-client' element={<CrearCliente/>} />
       <Route path='/create-plan-detail' element={<crearDetallePlan/>} />
       <Route path='/create-plan' element={<CreatePlan/>}/>
-      <Route path='/view-hotels' element={<ViewHotels/>}/>
+      <Route path='/create-transportation' element={<CrearTransporte/>}/>
+      <Route path='/create-meal' element={<CrearComida/>}/>
     </Routes>
   )
 }
