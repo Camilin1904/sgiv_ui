@@ -15,6 +15,7 @@ import { CrearCliente } from './screens/CrearCliente';
 import { crearDetallePlan } from './screens/CrearPlan';
 import { CreatePlan } from './screens/CrearPlan';
 import { ViewDestinations } from './screens/VistaDestinos';
+import { ViewHotels } from './screens/VistaHoteles';
 
 function App() {
   return(
@@ -30,6 +31,7 @@ function App() {
       <Route path='/create-client' element={<CrearCliente/>} />
       <Route path='/create-plan-detail' element={<crearDetallePlan/>} />
       <Route path='/create-plan' element={<CreatePlan/>}/>
+      <Route path='/view-hotels' element={<ViewHotels/>}/>
     </Routes>
   )
 }
