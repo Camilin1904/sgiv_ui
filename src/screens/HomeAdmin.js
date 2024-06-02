@@ -83,6 +83,9 @@ function HomeAdmin(){
       navigate('/view-plan-details');
     };
     
+    const toDestinations = ()=>{
+      navigate('/view-destinations')
+    }
 
     return (
       <body id="ii2r">
@@ -104,7 +107,7 @@ function HomeAdmin(){
                   </div>
                   <div id="ifpef" class="gjs-row"style={{height:"15%"}}>
                     <div class="gjs-cell" id="imhol" >
-                      <button type="button" id="ix8nz" style={{height:"70%"}}  class="boton">Destino</button>
+                      <button type="button" id="ix8nz" style={{height:"70%"}} onClick={toDestinations}  class="boton">Destino</button>
                     </div>
                   </div>
                   <div id="iq8ek" class="gjs-row"style={{height:"15%"}}>

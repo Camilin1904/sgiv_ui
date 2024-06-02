@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import '../css/homeAdmin.css';
 import { TopBar } from '../items/TopBar';
 
-function Home(){
+function CreatePlan(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
     const handleLogout = () => {
@@ -11,7 +11,7 @@ function Home(){
 
     return (
         <body id="ii2r">
-        <TopBar title={'Registrar Cliente'} />
+        <TopBar title={'Registrar Plan'} />
         <div id="ipbh" class="gjs-row">
           <div class="gjs-cell">
             <div id="igqg" class="gjs-row">
@@ -94,4 +94,4 @@ function Home(){
     );
 }
 
-export {Home}
+export {CreatePlan}

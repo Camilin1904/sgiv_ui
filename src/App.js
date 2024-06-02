@@ -13,6 +13,8 @@ import { ViewPlan } from './screens/VistaPlanes';
 import { ViewPlanDetail } from './screens/VistaDetallePlan';
 import { CrearCliente } from './screens/CrearCliente';
 import { crearDetallePlan } from './screens/CrearPlan';
+import { CreatePlan } from './screens/CrearPlan';
+import { ViewDestinations } from './screens/VistaDestinos';
 
 function App() {
   return(
@@ -24,9 +26,10 @@ function App() {
       <Route path='/view-clients' element={<ViewClients/>} />
       <Route path='/view-plans' element={<ViewPlan/>} />
       <Route path='/view-plan-details' element={<ViewPlanDetail/>} />
+      <Route path='/view-destinations' element={<ViewDestinations/>}/>
       <Route path='/create-client' element={<CrearCliente/>} />
       <Route path='/create-plan-detail' element={<crearDetallePlan/>} />
-
+      <Route path='/create-plan' element={<CreatePlan/>}/>
     </Routes>
   )
 }
