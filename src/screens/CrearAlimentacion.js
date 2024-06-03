@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/crearComida.css';
 import { TopBar } from '../items/TopBar';
+import axios from 'axios';
 
 function CrearAlimentacion() {
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
 
-    
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+
+    const handleCreateFood = async (e) => {
+        e.preventDefault();
+
+        const foodData = {
+            id: null,
+            name: name,
+            description: description,
+            status: 'Active'
+        };
+
+        try {
+            await axios.post('http://localhost:9092/meals/create', foodData, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            navigate('/view-meals');
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <div id="ii2r">
@@ -15,7 +41,7 @@ function CrearAlimentacion() {
                 <div id="iw09o" className="gjs-cell">
                     <div id="igqg" className="gjs-row">
                         <div id="is6bi" className="gjs-row">
-                            <form>
+                            <form onSubmit={handleCreateFood}>
                                 <div id="ib7yb" className="gjs-cell">
                                     <div id="ijwtz" className="gjs-row" style={{height: '20vh'}}>
                                         <div id="ioj32" className="gjs-cell" style={{height: '10vh'}}>
@@ -36,6 +62,7 @@ function CrearAlimentacion() {
                                                         required
                                                         placeholder="Nombre de comida"
                                                         className="texto"
+                                                        onChange={e => setName(e.target.value)}
                                                     />
                                                 </div>
                                                 <div id="i0a0k" className="gjs-cell">
@@ -45,6 +72,7 @@ function CrearAlimentacion() {
                                                         required
                                                         placeholder="Descripción"
                                                         className="texto"
+                                                        onChange={e => setDescription(e.target.value)}
                                                     />
                                                 </div>
                                             </div>

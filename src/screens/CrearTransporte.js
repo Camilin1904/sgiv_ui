@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/crearTransporte.css';
 import { TopBar } from '../items/TopBar';
+import axios from 'axios';
 
 function CrearTransporte() {
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+
+    const handleCreateTransportation = async (e) => {
+        e.preventDefault();
+
+        const transportationData = {
+            id: null,
+            name: name,
+            description: description,
+            status: 'Active'
+        };
+
+        try {
+            await axios.post('http://localhost:9092/transportation/create', transportationData, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            navigate('/view-transportation');
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <div id="ii2r">
@@ -13,7 +41,7 @@ function CrearTransporte() {
                 <div id="iw09o" className="gjs-cell">
                     <div id="igqg" className="gjs-row">
                         <div id="is6bi" className="gjs-row">
-                            <form>
+                            <form onSubmit={handleCreateTransportation}>
                                 <div id="ib7yb" className="gjs-cell">
                                     <div id="ijwtz" className="gjs-row" style={{height: '20vh'}}>
                                         <div id="ioj32" className="gjs-cell" style={{height: '10vh'}}>
@@ -34,16 +62,17 @@ function CrearTransporte() {
                                                         required
                                                         placeholder="Nombre de transporte"
                                                         className="texto"
+                                                        onChange={e => setName(e.target.value)}
                                                     />
                                                 </div>
                                                 <div id="i0a0k" className="gjs-cell">
                                                     <div id="iv07cp" className="texto">Descripción</div>
                                                     <textarea
-                                                        type="text"
                                                         id="ixeik5"
                                                         required
                                                         placeholder="Descripción"
                                                         className="texto"
+                                                        onChange={e => setDescription(e.target.value)}
                                                     />
                                                 </div>
                                             </div>
