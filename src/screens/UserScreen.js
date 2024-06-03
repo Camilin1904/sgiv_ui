@@ -8,8 +8,8 @@ import { TopBar } from '../items/TopBar';
 function ViewUsers() {
     const navigate = useNavigate();
 
-    const handleCreateClient = () => {
-        navigate('/create-client');
+    const handleCreateUser = () => {
+        navigate('/create-user');
     };
 
     const [users, setUsers] = useState([]);
@@ -20,7 +20,7 @@ function ViewUsers() {
         const fetchUsers = async () => {
             try {
                 const response = await axios.post(
-                    'http://localhost:9092/user/page_user',
+                    'http://localhost:9092/users/page_user',
                     {
                         idNum: null,
                         type: null,
@@ -44,7 +44,7 @@ function ViewUsers() {
 
         const countUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:9092/user/count', {
+                const response = await axios.get('http://localhost:9092/users/count', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -78,7 +78,7 @@ function ViewUsers() {
                                                     <button type="button" id="i1aomg"></button>
                                                 </div>
                                                 <div className="gjs-cell" id="ivtoj3">
-                                                    <button type="button" id="ivslaq" onClick={null}>Crear</button>
+                                                    <button type="button" id="ivslaq" onClick={handleCreateUser}>Crear</button>
                                                 </div>
                                             </div>
                                         </div>
