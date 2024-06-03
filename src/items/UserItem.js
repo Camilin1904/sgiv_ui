@@ -20,12 +20,12 @@ function UserItem(props) {
           </tr>
           <br/>
           <tr>
-            Fecha de Creation:{user.creationDate}
+            Fecha de Creación: {user.creationDate}
           </tr>
         </td>
         <td>
           <tr>
-            Email: {user.email}
+            Correo: {user.email}
           </tr>
           <br/>
           <tr>

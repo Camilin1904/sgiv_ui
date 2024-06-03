@@ -38,22 +38,21 @@ function CrearUsuario() {
 
             const createC = async() => {
                 const clientData = {
-                id: null,
-                type: type,
+                type: type.id,
                 username: username,
                 email: email,
-                status: 'Active'
+                password: pass1,
                 };
             
             
-                await axios.post('http://localhost:9092/client/create', clientData, {
+                await axios.post('http://localhost:9092/auth/register', clientData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
                 });
             };
             createC();
-            navigate('/view-clients')
+            navigate('/view-users')
         }
         else{
             alert('Las contraseñas son diferentes')
