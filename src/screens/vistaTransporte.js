@@ -1,39 +1,37 @@
 import { useNavigate } from 'react-router-dom';
-import '../css/vistaClientes.css';
+import '../css/vistaAlimentacion.css';
 import logo from '../img/logo.png';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ClientItem } from '../items/ClientItem';
+import { TransportationItem } from '../items/TransportationItem';
 import { TopBar } from '../items/TopBar';
 
-function ViewClients() {
+function ViewTransportation() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
         navigate('/');
     };
 
-    const handleCreateClient = () => {
-        navigate('/create-client');
+    const handleCreateTransportation = () => {
+        navigate('/create-transportation');
     };
 
-    const [clients, setClients] = useState([]);
+    const [transportation, setTransportation] = useState([]);
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
-    const [id, setID] = useState(null);
+    const [name, setName] = useState(null);
 
     useEffect(() => {
-        if(!id){
-            setID(null);
-        }
-        const fetchClients = async () => {
+        const fetchTransportation = async () => {
+            if(!name & name != null){
+                setName(null)
+            }
             try {
                 const response = await axios.post(
-                    'http://localhost:9092/client/page_client',
+                    'http://localhost:9092/transportation/page_transportation',
                     {
-                        idNum: id,
-                        bDateLower: null,
-                        bDateUpper: null,
+                        name: name,
                         status: 'Active',
                         size: 10,
                         page: 0,
@@ -45,16 +43,16 @@ function ViewClients() {
                         },
                     }
                 );
-                console.log(response.data);
-                setClients(response.data);
+                console.log(response);
+                setTransportation(response.data);
             } catch (error) {
                 console.log(error);
             }
         };
 
-        const countClients = async () => {
+        const countTransportation = async () => {
             try {
-                const response = await axios.get('http://localhost:9092/client/count', {
+                const response = await axios.get('http://localhost:9092/transportation/count', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -65,13 +63,13 @@ function ViewClients() {
             }
         };
 
-        countClients();
-        fetchClients();
-    }, [token, id]);
+        countTransportation();
+        fetchTransportation();
+    }, [token, name]);
 
     return (
         <div id="ii2r">
-            <TopBar title={'Clientes'} />
+            <TopBar title={'Transporte'} />
             <div id="ipbh" style={{ height: "85vh" }} className="gjs-row">
                 <div className="gjs-cell">
                     <div id="igqg" className="gjs-row">
@@ -82,13 +80,10 @@ function ViewClients() {
                                         <div id="i4o0i" className="gjs-cell">
                                             <div className="gjs-row" id="i6rii7">
                                                 <div className="gjs-cell" id="i0ak2w">
-                                                    <input type="text" id="im30us" placeholder="Numero de identidad" onChange={idNum => setID(idNum.target.value)}/>
-                                                </div>
-                                                <div className="gjs-cell" id="idgqzc">
-                                                    <button type="button" id="i1aomg"></button>
+                                                    <input type="text" id="im30us" placeholder="Plan" onChange={transportation=>setName(transportation.target.value)}/>
                                                 </div>
                                                 <div className="gjs-cell" id="ivtoj3">
-                                                    <button type="button" id="ivslaq" onClick={handleCreateClient}>Crear</button>
+                                                    <button type="button" id="ivslaq" onClick={handleCreateTransportation}>Crear</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,10 +91,10 @@ function ViewClients() {
                                     <div className="gjs-row1" id="ilh64g" style={{ height: '80%', overflowY: 'scroll' }}>
                                         <div className="gjs-cell" id="izbov7">
                                             <div className="gjs-row1" id="plan-list">
-                                                {clients.map((client) => (
-                                                    <ClientItem
-                                                        key={client.id} // Assuming client object has an 'id' property
-                                                        props={client}
+                                                {transportation.map((transportation) => (
+                                                    <TransportationItem
+                                                        key={transportation.id} // Assuming client object has an 'id' property
+                                                        props={transportation}
                                                     />
                                                 ))}
                                             </div>
@@ -137,4 +132,4 @@ function ViewClients() {
     );
 }
 
-export { ViewClients };
+export { ViewTransportation };

@@ -1,17 +1,28 @@
 import React from 'react';
-import '../css/items/HotelItem.css';
 
-function HotelItem(props) {
-    return (
-      <li className='HotelItem'>
-        <h2 className='HotelItem-name'>{props.name}</h2>
-        <p className='HotelItem-address'>{props.address}</p>
-        <p className='HotelItem-phone'>{props.phone}</p>
-        <p className='HotelItem-email'>{props.email}</p>
-        <p className='HotelItem-websiteUrl'>{props.websiteUrl}</p>
-        <p className={`HotelItem-status ${props.status === 'active' && 'HotelItem-status--active'}`}>{props.status}</p>
-      </li>
+function MealsItem(props) {
+  const meal = props.props;
+  return (
+    <>
+      <div class="gjs-row" id="ibrpca" style={{height:'11vh'}}>
+        <div class="gjs-cell">
+          <div id="iymgd" class="gjs-row" style={{width:'auto', 'border-radius':'15px'}}>
+            <table>
+              <td style={{width:'50%'}}>
+                  <h1>{meal.name}</h1>
+              </td>
+              <td style={{width:'50%', overflowY:'auto', wordWrap:'normal'}}>
+                  Descripción: {meal.description}
+              </td>
+              
+            </table>
+          </div>
+        </div>
+        <button class='edit-button'>Editar</button>
+      </div>
+      <br />
+    </>
     );
 }
 
-export { HotelItem };
+export { MealsItem };

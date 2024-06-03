@@ -1,39 +1,39 @@
 import { useNavigate } from 'react-router-dom';
-import '../css/vistaClientes.css';
+import '../css/vistaAlimentacion.css';
 import logo from '../img/logo.png';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ClientItem } from '../items/ClientItem';
+import { MealsItem } from '../items/MealsItem';
 import { TopBar } from '../items/TopBar';
 
-function ViewClients() {
+function ViewMeals() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
         navigate('/');
     };
 
-    const handleCreateClient = () => {
-        navigate('/create-client');
+    const handleCreateMeals = () => {
+        navigate('/create-meal');
     };
 
-    const [clients, setClients] = useState([]);
+    const [meals, setMeals] = useState([]);
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
-    const [id, setID] = useState(null);
+    const [mealName, setMealName] = useState(null)
+    //const [search, setSearch] = useState(false)
 
     useEffect(() => {
-        if(!id){
-            setID(null);
+        console.log(mealName)
+        if (!mealName){
+            setMealName(null)
         }
-        const fetchClients = async () => {
+        const fetchMeals = async () => {
             try {
                 const response = await axios.post(
-                    'http://localhost:9092/client/page_client',
+                    'http://localhost:9092/meals/page_meals',
                     {
-                        idNum: id,
-                        bDateLower: null,
-                        bDateUpper: null,
+                        name: mealName,
                         status: 'Active',
                         size: 10,
                         page: 0,
@@ -45,16 +45,16 @@ function ViewClients() {
                         },
                     }
                 );
-                console.log(response.data);
-                setClients(response.data);
+                console.log(response);
+                setMeals(response.data);
             } catch (error) {
                 console.log(error);
             }
         };
 
-        const countClients = async () => {
+        const countMeals = async () => {
             try {
-                const response = await axios.get('http://localhost:9092/client/count', {
+                const response = await axios.get('http://localhost:9092/meals/count', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -65,13 +65,13 @@ function ViewClients() {
             }
         };
 
-        countClients();
-        fetchClients();
-    }, [token, id]);
+        countMeals();
+        fetchMeals();
+    }, [token, mealName]);
 
     return (
         <div id="ii2r">
-            <TopBar title={'Clientes'} />
+            <TopBar title={'Alimentación'} />
             <div id="ipbh" style={{ height: "85vh" }} className="gjs-row">
                 <div className="gjs-cell">
                     <div id="igqg" className="gjs-row">
@@ -82,13 +82,10 @@ function ViewClients() {
                                         <div id="i4o0i" className="gjs-cell">
                                             <div className="gjs-row" id="i6rii7">
                                                 <div className="gjs-cell" id="i0ak2w">
-                                                    <input type="text" id="im30us" placeholder="Numero de identidad" onChange={idNum => setID(idNum.target.value)}/>
-                                                </div>
-                                                <div className="gjs-cell" id="idgqzc">
-                                                    <button type="button" id="i1aomg"></button>
+                                                    <input type="text" id="im30us" placeholder="Plan" onChange={meal=>{setMealName(meal.target.value);}}/>
                                                 </div>
                                                 <div className="gjs-cell" id="ivtoj3">
-                                                    <button type="button" id="ivslaq" onClick={handleCreateClient}>Crear</button>
+                                                    <button type="button" id="ivslaq" onClick={handleCreateMeals}>Crear</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,10 +93,10 @@ function ViewClients() {
                                     <div className="gjs-row1" id="ilh64g" style={{ height: '80%', overflowY: 'scroll' }}>
                                         <div className="gjs-cell" id="izbov7">
                                             <div className="gjs-row1" id="plan-list">
-                                                {clients.map((client) => (
-                                                    <ClientItem
-                                                        key={client.id} // Assuming client object has an 'id' property
-                                                        props={client}
+                                                {meals.map((meal) => (
+                                                    <MealsItem
+                                                        key={meal.id} // Assuming client object has an 'id' property
+                                                        props={meal}
                                                     />
                                                 ))}
                                             </div>
@@ -137,4 +134,4 @@ function ViewClients() {
     );
 }
 
-export { ViewClients };
+export { ViewMeals };

@@ -19,14 +19,18 @@ function ViewHotels() {
     const [hotels, setHotels] = useState([]);
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
+    const [name, setName] = useState(null);
 
     useEffect(() => {
+        if(!name){
+            setName(null);
+        }
         const fetchHotels = async () => {
             try {
                 const response = await axios.post(
                     'http://localhost:9092/hotel/page_hotel',
                     {
-                        name: null,
+                        name: name,
                         address: null,
                         status: 'Active',
                         size: 10,
@@ -61,7 +65,7 @@ function ViewHotels() {
 
         countHotels();
         fetchHotels();
-    }, [token]);
+    }, [token, name]);
 
     return (
         <div id="ii2r">
@@ -76,7 +80,7 @@ function ViewHotels() {
                                         <div id="i4o0i" className="gjs-cell">
                                             <div className="gjs-row" id="i6rii7">
                                                 <div className="gjs-cell" id="i0ak2w">
-                                                    <input type="text" id="im30us" placeholder="Plan" />
+                                                    <input type="text" id="im30us" placeholder="Hotel" onChange={hotel=>setName(hotel.target.value)}/>
                                                 </div>
                                                 <div className="gjs-cell" id="idgqzc">
                                                     <button type="button" id="i1aomg"></button>

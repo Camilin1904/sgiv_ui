@@ -17,7 +17,10 @@ import { CreatePlan } from './screens/CrearPlan';
 import { ViewDestinations } from './screens/VistaDestinos';
 import { ViewHotels } from './screens/VistaHoteles';
 import { CrearTransporte } from './screens/CrearTransporte';
-import { CrearComida } from './screens/CrearComida';
+import { CrearAlimentacion } from './screens/CrearAlimentacion';
+import { ViewMeals } from './screens/vistaAlimentacion';
+import { TransportationItem } from './items/TransportationItem';
+import { ViewTransportation } from './screens/vistaTransporte';
 
 function App() {
   return(
@@ -30,11 +33,14 @@ function App() {
       <Route path='/view-plans' element={<ViewPlan/>} />
       <Route path='/view-plan-details' element={<ViewPlanDetail/>} />
       <Route path='/view-destinations' element={<ViewDestinations/>}/>
-      <Route path='/create-client' element={<CrearCliente/>} />
-      <Route path='/create-plan-detail' element={<crearDetallePlan/>} />
+      <Route path='/view-hotels' element={<ViewHotels/>}/>
+      <Route path='/view-meals' element={<ViewMeals/>}/>
+      <Route path='/view-transportation' element={<ViewTransportation/>}/>
+      <Route path='/create-client' element={<CrearCliente/>}/>
+      <Route path='/create-plan-detail' element={<crearDetallePlan/>}/>
       <Route path='/create-plan' element={<CreatePlan/>}/>
       <Route path='/create-transportation' element={<CrearTransporte/>}/>
-      <Route path='/create-meal' element={<CrearComida/>}/>
+      <Route path='/create-meal' element={<CrearAlimentacion/>}/>
     </Routes>
   )
 }

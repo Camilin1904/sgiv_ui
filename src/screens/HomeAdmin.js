@@ -87,6 +87,16 @@ function HomeAdmin(){
       navigate('/view-destinations')
     }
 
+    const toHotels = ()=>{
+      navigate('/view-hotels')
+    }
+    const toMeals = ()=>{
+      navigate('/view-meals')
+    }
+    const toTransportation = ()=>{
+      navigate('/view-transportation')
+    }
+
     return (
       <body id="ii2r">
       <TopBar title={''} />
@@ -118,6 +128,21 @@ function HomeAdmin(){
                   <div id="iwtke" class="gjs-row" style={{height:"15%"}}>
                     <div class="gjs-cell" >
                       <button type="button" id="if9va" style={{height:"70%"}}onClick={toClients} class="boton">Ver clientes</button>
+                    </div>
+                  </div>
+                  <div id="iwtke2" class="gjs-row" style={{height:"15%"}}>
+                    <div class="gjs-cell" >
+                      <button type="button" id="if9va" style={{height:"70%"}}onClick={toHotels} class="boton">Ver hoteles</button>
+                    </div>
+                  </div>
+                  <div id="iwtke3" class="gjs-row" style={{height:"15%"}}>
+                    <div class="gjs-cell" >
+                      <button type="button" id="if9va" style={{height:"70%"}}onClick={toMeals} class="boton">Ver Opciones de alimetación</button>
+                    </div>
+                  </div>
+                  <div id="iwtke3" class="gjs-row" style={{height:"15%"}}>
+                    <div class="gjs-cell" >
+                      <button type="button" id="if9va" style={{height:"70%"}}onClick={toTransportation} class="boton">Ver Opciones de transporte</button>
                     </div>
                   </div>
                 </div>

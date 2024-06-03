@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import '../css/crearComida.css';
 import { TopBar } from '../items/TopBar';
 
-function CrearComida() {
+function CrearAlimentacion() {
     const navigate = useNavigate();
+
+    
 
     return (
         <div id="ii2r">
-            <TopBar title={'Crear Comida'} />
+            <TopBar title={'Crear Alimentación'} />
             <div id="ipbh" className="gjs-row">
                 <div id="iw09o" className="gjs-cell">
                     <div id="igqg" className="gjs-row">
@@ -38,8 +40,7 @@ function CrearComida() {
                                                 </div>
                                                 <div id="i0a0k" className="gjs-cell">
                                                     <div id="iv07cp" className="texto">Descripción</div>
-                                                    <input
-                                                        type="text"
+                                                    <textarea
                                                         id="ixeik5"
                                                         required
                                                         placeholder="Descripción"
@@ -59,4 +60,4 @@ function CrearComida() {
     );
 }
 
-export { CrearComida };
+export { CrearAlimentacion };

@@ -38,7 +38,7 @@ function CrearTransporte() {
                                                 </div>
                                                 <div id="i0a0k" className="gjs-cell">
                                                     <div id="iv07cp" className="texto">Descripción</div>
-                                                    <input
+                                                    <textarea
                                                         type="text"
                                                         id="ixeik5"
                                                         required

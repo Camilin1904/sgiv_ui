@@ -17,14 +17,18 @@ function ViewPlanDetail(){
     const [planDetails, setPlanDetails] = useState([]);
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
+    const [name, setName] = useState(null);
 
     useEffect(() => {
+        if(!name){
+            setName(null);
+        }
         const fetchPlans = async () => {
             try {
                 const response = await axios.post(
                     'http://localhost:9092/plan_detail/page_plan_detail',
                     {
-                        name: null,
+                        name: name,
                         daysUpper: null,
                         daysLower: null,
                         nightsUpper: null,
@@ -64,7 +68,7 @@ function ViewPlanDetail(){
 
         countPlans();
         fetchPlans();
-    }, [token]);
+    }, [token, name]);
 
 
 
@@ -82,7 +86,7 @@ function ViewPlanDetail(){
                                         <div id="i4o0i" className="gjs-cell">
                                             <div className="gjs-row" id="i6rii7">
                                                 <div className="gjs-cell" id="i0ak2w">
-                                                    <input type="text" id="im30us" placeholder="Plan" />
+                                                    <input type="text" id="im30us" placeholder="Detalle plan" onChange={dp=>setName(dp.target.value)}/>
                                                 </div>
                                                 <div className="gjs-cell" id="idgqzc">
                                                     <button type="button" id="i1aomg"></button>

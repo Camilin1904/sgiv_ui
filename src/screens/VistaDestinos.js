@@ -19,14 +19,18 @@ function ViewDestinations() {
     const [destinations, setDestinations] = useState([]);
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
+    const [name, setName] = useState(null)
 
     useEffect(() => {
+        if(!name){
+            setName(null);
+        }
         const fetchDestinations = async () => {
             try {
                 const response = await axios.post(
                     'http://localhost:9092/destination/page_dest',
                     {
-                        name: null,
+                        name: name,
                         code: null,
                         status: 'Active',
                         type:null,
@@ -62,7 +66,7 @@ function ViewDestinations() {
 
         countDestinations();
         fetchDestinations();
-    }, [token]);
+    }, [token, name]);
 
     return (
         <div id="ii2r">
@@ -77,7 +81,7 @@ function ViewDestinations() {
                                         <div id="i4o0i" className="gjs-cell">
                                             <div className="gjs-row" id="i6rii7">
                                                 <div className="gjs-cell" id="i0ak2w">
-                                                    <input type="text" id="im30us" placeholder="Plan" />
+                                                    <input type="text" id="im30us" placeholder="Destino" onChange={dest=>setName(dest.target.value)}/>
                                                 </div>
                                                 <div className="gjs-cell" id="idgqzc">
                                                     <button type="button" id="i1aomg"></button>
