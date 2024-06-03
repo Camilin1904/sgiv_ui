@@ -19,8 +19,8 @@ import { ViewHotels } from './screens/VistaHoteles';
 import { CrearTransporte } from './screens/CrearTransporte';
 import { CrearAlimentacion } from './screens/CrearAlimentacion';
 import { ViewMeals } from './screens/vistaAlimentacion';
-import { TransportationItem } from './items/TransportationItem';
 import { ViewTransportation } from './screens/vistaTransporte';
+import { ViewUsers } from './screens/UserScreen';
 
 function App() {
   return(
@@ -36,6 +36,7 @@ function App() {
       <Route path='/view-hotels' element={<ViewHotels/>}/>
       <Route path='/view-meals' element={<ViewMeals/>}/>
       <Route path='/view-transportation' element={<ViewTransportation/>}/>
+      <Route path='/view-users' element={<ViewUsers/>}/>
       <Route path='/create-client' element={<CrearCliente/>}/>
       <Route path='/create-plan-detail' element={<crearDetallePlan/>}/>
       <Route path='/create-plan' element={<CreatePlan/>}/>

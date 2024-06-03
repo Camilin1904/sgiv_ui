@@ -5,6 +5,7 @@ import loginPic from '../img/loginPic.png';
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { TopBar } from '../items/TopBar';
+import { RouteHome } from './HomeRouter';
 
 
 function Login(){
@@ -27,18 +28,11 @@ function Login(){
         try{
           const loginResponse = JSON.parse(response);
           const token = loginResponse.token;
-          const decodedToken = jwtDecode(token);
-          const type = decodedToken.Authorities[0].name;
           localStorage.setItem("username",username);
           localStorage.setItem("token",token);
-            if(type==="Admin"){
-              navigate('/home-admin');
-            } else if(type==="Sales"){
-              navigate('/home-sales');
-            } else if(type==="Viewer"){
-              navigate('/home-viewer');
-            }
+          navigate(RouteHome())
         } catch(error){
+          console.log(error)
             alert("Nombre de usuario o constraseña incorrectos");
         } 
       });

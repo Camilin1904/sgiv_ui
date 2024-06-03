@@ -1,22 +1,26 @@
 import { useNavigate } from 'react-router-dom';
 import '../css/homeAdmin.css';
-import logo from '../img/logo.png';
-import StatService from '../service/StatService';
 import { useEffect, useState } from 'react';
 import { TopBar } from '../items/TopBar';
 import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
+import { RouteHome } from './HomeRouter';
+
 
 
 function HomeAdmin(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
     const token = localStorage.getItem('token')
-    const handleLogout = () => {
-      navigate('/')
-    };
     const [popularDestination, setPopularDestination] = useState('');
     const [saleNow, setSaleNow] = useState('');
     const [popPlan, setPopPlan] = useState('');
+    const decodedToken = jwtDecode(token);
+
+    if(decodedToken.Authorities[0].name!=='Admin'){
+      navigate(RouteHome())
+    }
+
     useEffect(() => {
   
       const fetchPopDest = async () => {
@@ -69,7 +73,7 @@ function HomeAdmin(){
       fetchPopDest();
       fetchSaleNow();
       fetchPopPlan();
-    }, []);
+    }, [token]);
 
   
 
@@ -95,6 +99,10 @@ function HomeAdmin(){
     }
     const toTransportation = ()=>{
       navigate('/view-transportation')
+    }
+
+    const toUsers=()=>{
+      navigate('/view-users')
     }
 
     return (
@@ -143,6 +151,11 @@ function HomeAdmin(){
                   <div id="iwtke3" class="gjs-row" style={{height:"15%"}}>
                     <div class="gjs-cell" >
                       <button type="button" id="if9va" style={{height:"70%"}}onClick={toTransportation} class="boton">Ver Opciones de transporte</button>
+                    </div>
+                  </div>
+                  <div id="iwtke4" class="gjs-row" style={{height:"15%"}}>
+                    <div class="gjs-cell" >
+                      <button type="button" id="if9va" style={{height:"70%"}}onClick={toUsers} class="boton">Ver Usuarios</button>
                     </div>
                   </div>
                 </div>
