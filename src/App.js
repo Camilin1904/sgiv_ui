@@ -22,6 +22,7 @@ import { ViewMeals } from './screens/vistaAlimentacion';
 import { ViewTransportation } from './screens/vistaTransporte';
 import { ViewUsers } from './screens/UserScreen';
 import { CrearUsuario } from './screens/CrearUsuario';
+import { CrearDestino } from './screens/CrearDestino';
 
 function App() {
   return(
@@ -44,6 +45,7 @@ function App() {
       <Route path='/create-transportation' element={<CrearTransporte/>}/>
       <Route path='/create-meal' element={<CrearAlimentacion/>}/>
       <Route path='/create-user' element={<CrearUsuario/>}/>
+      <Route path='/create-destination' element={<CrearDestino/>}/>
 
 
     </Routes>

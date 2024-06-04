@@ -1,0 +1,257 @@
+/* Agregar o actualizar estos estilos en tu archivo crearDestino.css */
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+.gjs-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    padding: 10px;
+}
+.gjs-cell {
+    min-height: 75px;
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+#i10d {
+    background-repeat: repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: auto;
+    background-image: linear-gradient(#0159a1 0%, #0159a1 100%);
+    height: 100%;
+}
+#ilv1 {
+    flex-basis: 88%;
+    float: none;
+    margin: 0px 0 0px 0px;
+}
+#ijcaw {
+    color: black;
+    width: 240px;
+    height: 100%;
+}
+#ipbh {
+    height: 600px;
+    padding: 0px 0px 0px 0px;
+}
+#igqg {
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+}
+#ibzy2 {
+    padding: 0px 0px 0px 0px;
+    height: 100%;
+}
+#i526g {
+    flex-basis: 57%;
+}
+#iah6o2 {
+    padding: 0px 0px 0px 0;
+    font-size: 47px;
+    height: 80%;
+    width: 500px;
+    margin: 2% 0px 0px 3%;
+    color: white;
+}
+#is6bi {
+    height: 550px;
+    width: 100%;
+    flex-direction: column;
+    padding: 0px 0px 0px 0px;
+}
+#ia4mh {
+    padding: 10px;
+    font-size: 30px;
+    margin: 20px 0px 0px 100px;
+}
+#iqx84 {
+    padding: 10px 10px 0 10px;
+}
+#igaf4 {
+    margin-top: 70px;
+    flex-direction: column;
+    padding: 10px 10px 0 10px;
+}
+#i56sl {
+    flex-direction: column;
+    padding: 10px 10px 0 10px;
+}
+#i03df {
+    height: 35px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 200px 0px 50px;
+}
+#iu9ej {
+    padding: 0 10px 10px 10px;
+}
+#igtxh {
+    flex-direction: column;
+}
+#i9fb5 {
+    flex-direction: column;
+}
+#ioqx9 {
+    min-height: 100%;
+}
+#i9u9j {
+    min-height: 100%;
+}
+#ik3xf {
+    height: 34px;
+    padding: 0px 0px 0px 0px;
+}
+#iu0xk {
+    min-height: 100%;
+}
+#ivpjv {
+    min-height: 100%;
+    flex-basis: 50px;
+}
+#i9gva4 {
+    height: 35px;
+    padding: 0px 0px 0px 0px;
+}
+#iqpndx {
+    min-height: 100%;
+    flex-basis: 50px;
+}
+#i90ol2 {
+    min-height: 100%;
+}
+#iz7d4m {
+    height: 90%;
+    width: 90%;
+}
+#igjjqz {
+    width: 90%;
+    height: 90%;
+}
+#ifpuja {
+    padding: 10px;
+    margin: 0px 0px 0px 0;
+    font-size: 20px;
+}
+#imqp0p {
+    padding: 10px;
+    margin: 0px 0px 0px 0;
+    font-size: 20px;
+}
+#iv07cp {
+    padding: 10px;
+}
+#ixeik5 {
+    font-size: 20px;
+}
+#ihiyv4 {
+    padding: 10px;
+    margin: 0px 0px 0px 50px;
+}
+#ig9af4 {
+    padding: 10px;
+}
+#iiz877 {
+    padding: 10px;
+    margin: 0px 0px 0px 50px;
+    font-size: 20px;
+    border-radius: 15px 15px 15px 15px;
+}
+#i40cuc {
+    padding: 10px;
+}
+#i0g2gm {
+    padding: 10px;
+    margin: 0px 0px 0px 50px;
+}
+#ilrxql {
+    font-size: 20px;
+    margin: 0px 0px 0px 50px;
+}
+#is1wpt {
+    font-size: 20px;
+}
+#io12dg {
+    font-size: 20px;
+    margin: 0px 0px 0px 50px;
+}
+.texto {
+    padding: 10px;
+    font-size: 20px;
+    margin: 0px 0px 0px 300px;
+    border-radius: 15px 15px 15px 15px;
+}
+.textr {
+    font-size: 20px;
+    margin: 0px 0px 0px 50px;
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px 10px 10px 10px;
+}
+#in3fl {
+    border-radius: 15px;
+    color: white;
+    font-size: 20px;
+    margin: 30px 0px 0px 300px;
+    height: 60%;
+    width: 40%;
+    max-width: 40%;
+    min-height: 60%;
+    border: none;
+    cursor: pointer;
+    transition: background-image 0.3s ease, box-shadow 0.3s ease;
+}
+#in3fl:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+#in3fl1 {
+    background-image: linear-gradient(#0159a1, #0159a1, #0159a1 100%);
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    max-width: 90%;
+    border-radius: 15px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+#in3fl1:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.image-input {
+    display: none;
+}
+.image-upload-label {
+    border-radius: 15px;
+    background-image: linear-gradient(to right, #ff416c, #ff4b2b);
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 20px 0;
+    transition: background-image 0.3s ease, box-shadow 0.3s ease;
+}
+.image-upload-label:hover {
+    background-image: linear-gradient(to right, #ff4b2b, #ff416c);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 992px) {
+    #ijcaw {
+        width: 186px;
+        height: 71px;
+    }
+}
+@media (max-width: 768px) {
+    .gjs-row {
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 480px) {
+    #ijcaw {
+        width: 186px;
+        height: 70px;
+    }
+}
