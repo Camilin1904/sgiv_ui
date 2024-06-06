@@ -7,11 +7,11 @@ function ClientItem(p) {
     return (
 <>
 <div class="gjs-row" id="ibrpca" style={{height:'11vh'}}>
-  <div class="cacaca" id="i61jk8">
+  <div class="gjs-cell" id="i61jk8">
     <div id="iwqlh" className='PlanItem-code'>  {props.firstName} {props.lastName} {props.secondLastName}
     </div>
   </div>
-  <div class="cacac">
+  <div class="gjs-cell">
     <div id="iymgd" class="gjs-row">
       <table>
         <td>

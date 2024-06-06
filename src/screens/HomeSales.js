@@ -51,7 +51,7 @@ function HomeSales() {
                     <div id="igqg" className="gjs-row">
                         <div className="gjs-cell">
                             <div id="ix0m" className="gjs-row">
-                                <div id="iagje" className="gjs-cell">
+                                <div id="iagje1" className="gjs-cell">
                                     <div id="ie43l">Bienvenido (ventas), {username}</div>
                                 </div>
                                 <div id="ij1vb" className="gjs-cell">
@@ -79,7 +79,7 @@ function HomeSales() {
                             </div>
                         </div>
                         <div id="ikv4" className="gjs-cell">
-                            <div id="ilxmp" className="gjs-row">
+                            <div id="ilxmp1" className="gjs-row">
                                 <div id="i1axm" className="gjs-cell">
                                     <div id="iwo55" className="gjs-row">
                                         <div id="i4o0i" className="gjs-cell">

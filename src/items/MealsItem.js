@@ -6,7 +6,7 @@ function MealsItem(props) {
     <>
       <div class="gjs-row" id="ibrpca" style={{height:'11vh'}}>
         <div class="gjs-cell">
-          <div id="iymgd" class="gjs-row" style={{width:'auto', 'border-radius':'15px'}}>
+          <div id="iymgd1" class="gjs-row" style={{width:'auto', 'border-radius':'15px'}}>
             <table>
               <td style={{width:'50%'}}>
                   <h1>{meal.name}</h1>

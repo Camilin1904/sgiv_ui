@@ -100,19 +100,19 @@ function HomeAdmin() {
   return (
     <body id="ii2r">
       <TopBar title={''} />
-      <div id="ipbh" className="gjs-row">
-        <div className="gjs-cell">
-          <div id="igqg" className="gjs-row">
-            <div className="gjs-cell">
-              <div id="ix0m" className="gjs-row">
-                <div id="iagje" className="gjs-cell">
+      <div id="ipbh" class="gjs-row">
+        <div class="gjs-cell">
+          <div id="igqg" class="gjs-row">
+            <div class="gjs-cell">
+              <div id="ix0m" class="gjs-row">
+                <div id="iagje1" class="gjs-cell">
                   <div id="ie43l">Bienvenido (administrador), {username}
                   </div>
                 </div>
-                <div id="ij1vb" className="gjs-cell">
-                  <div id="isr62" className="gjs-row" style={{ height: "15%" }}>
-                    <div className="gjs-cell">
-                      <button type="button" style={{ height: "70%" }} id="ihcz4" onClick={toPlans} className="boton">Planes asignados</button>
+                <div id="ij1vb1" class="gjs-cell">
+                  <div id="isr62" class="gjs-row" style={{height:"15%"}}>
+                    <div class="gjs-cell">
+                      <button type="button" style={{height:"70%"}} id="ihcz4" onClick={toPlans} class="boton">Planes asignados</button>
                     </div>
                   </div>
                   <div id="ifpef" className="gjs-row" style={{ height: "15%" }}>
@@ -153,13 +153,13 @@ function HomeAdmin() {
                 </div>
               </div>
             </div>
-            <div id="ikv4" className="gjs-cell">
-              <div id="ilxmp" className="gjs-row">
-                <div id="i1axm" className="gjs-cell">
-                  <div id="iwo55" className="gjs-row">
-                    <div id="i4o0i" className="gjs-cell">
-                      <div id="iri2j" className="gjs-row">
-                        <div id="i1hnz" className="gjs-cell">
+            <div id="ikv4" class="gjs-cell">
+              <div id="ilxmp1" class="gjs-row">
+                <div id="i1axm" class="gjs-cell">
+                  <div id="iwo55" class="gjs-row">
+                    <div id="i4o0i" class="gjs-cell">
+                      <div id="iri2j" class="gjs-row">
+                        <div id="i1hnz" class="gjs-cell">
                           <div id="irp45">Resumen del día
                           </div>
                         </div>

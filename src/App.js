@@ -29,6 +29,7 @@ import { OnlyViewDestinations } from './screens/OnlyViewDestinations';
 import { SelectDestinations } from './screens/formsParts/SelectDestination';
 import { SelectMeals } from './screens/formsParts/SelectMeals';
 import { SelectTransportation } from './screens/formsParts/SelectTransportation';
+import { CrearHotel } from './screens/CrearHotel';
 import { Details } from './screens/Details'
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
       <Route path='/select-destination' element={<SelectDestinations/>}/>
       <Route path='/select-meals' element={<SelectMeals/>}/>
       <Route path='/select-transportation' element={<SelectTransportation/>}/>
+      <Route path='/create-hotel' element={<CrearHotel/>}/>
       <Route path="/details" element={<Details/>} />
     </Routes>
   )
