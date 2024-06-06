@@ -113,11 +113,11 @@ function HomeAdmin(){
           <div id="igqg" class="gjs-row">
             <div class="gjs-cell">
               <div id="ix0m" class="gjs-row">
-                <div id="iagje" class="gjs-cell">
+                <div id="iagje1" class="gjs-cell">
                   <div id="ie43l">Bienvenido (administrador), {username}
                   </div>
                 </div>
-                <div id="ij1vb" class="gjs-cell">
+                <div id="ij1vb1" class="gjs-cell">
                   <div id="isr62" class="gjs-row" style={{height:"15%"}}>
                     <div class="gjs-cell">
                       <button type="button" style={{height:"70%"}} id="ihcz4" onClick={toPlans} class="boton">Planes asignados</button>
@@ -162,7 +162,7 @@ function HomeAdmin(){
               </div>
             </div>
             <div id="ikv4" class="gjs-cell">
-              <div id="ilxmp" class="gjs-row">
+              <div id="ilxmp1" class="gjs-row">
                 <div id="i1axm" class="gjs-cell">
                   <div id="iwo55" class="gjs-row">
                     <div id="i4o0i" class="gjs-cell">

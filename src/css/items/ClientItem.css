@@ -4,3 +4,16 @@
     .gjs-cell2{
         width: 10px;
 }
+#iymgd1 {
+    flex-direction: column-reverse;
+    height: 72px;
+    min-height: 100%;
+    padding: 0px 0px 0px 0px;
+    border-radius: 0px 15px 15px 0px;
+    background-repeat: repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: auto;
+    background-image: linear-gradient(white 0%, white 100%);
+    width: 180%;
+}
