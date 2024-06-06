@@ -63,7 +63,7 @@ function Reserva() {
                                                     />
                                                 </div>
                                                 <div id="i0a0k" className="gjs-cell3">
-                                                    <div id="iv07cp" className="texto">AQUI SE PONE EL VALOR sty</div>
+                                                    <div id="iv07cp" className="texto">AQUI SE PONE EL VALOR</div>
                                                     
                                                 </div>
                                             </div>
