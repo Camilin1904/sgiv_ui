@@ -57,10 +57,10 @@ function GenericView(props){
             return (
                 <>
                 <div className="gjs-cell" id="ihtxki">
-                    <input type="text" id="i46s8v" />
+                    <input type="text" id="i46s8v" defaultValue = {parseInt(page)+1}/>
                 </div>
                 <div className="gjs-cell" id="i9i75f">
-                    <button type="button" id="inpm0j"></button>
+                    <button type="summit" id="inpm0j" onClick={()=>{document.getElementById('i46s8v').value>0&maxPage>parseInt(document.getElementById('i46s8v').value)-1?localStorage.setItem('page', parseInt(document.getElementById('i46s8v').value)-1):console.log("")}}></button>
                 </div>
                 </>
             )
@@ -121,6 +121,7 @@ function GenericView(props){
                                     </div>
                                     </form>
                                 </div>
+                                <label>Page {parseInt(page)+1} out of {maxPage}</label>
                             </div>
                         </div>
                     </div>
