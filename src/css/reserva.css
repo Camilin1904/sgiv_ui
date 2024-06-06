@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+.gjs-cell12 {
+    min-height: 75px;
+    flex-grow: 1;
+    flex-basis: 100%;
+    max-width: 90%;
+    margin-left: 20vh;
+    margin-right: 20vh;
+}
+.texto2 {
+    padding: 10px;
+    font-size: 20px;
+    margin: 0px 0px 0px 20vh;
+    border-radius: 15px 15px 15px 15px;
+}

@@ -30,8 +30,8 @@
   }
   
   #planDetails, #chartContainer, #topClientsContainer, #backButtonContainer {
+    margin-left: 15vh;
     flex-basis: 100%;
-    padding: 20px;
   }
   
   #planDetails h2, #chartContainer h2, #topClientsContainer h2 {
