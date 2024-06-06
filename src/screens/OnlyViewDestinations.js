@@ -72,6 +72,7 @@ function OnlyViewDestinations() {
         creation = {false}
         title = 'Destinos'
         item = 'Destino'
+        canCreate = {false}
         ></GenericView>
     );
 }

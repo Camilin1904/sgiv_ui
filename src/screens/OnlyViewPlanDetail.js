@@ -77,6 +77,8 @@ function OnlyViewPlanDetail() {
             creation={false}
             title='Detalles plan'
             item='Detalle plan'
+            canCreate = {false}
+
         />
     );
 }

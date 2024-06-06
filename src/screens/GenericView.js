@@ -1,7 +1,6 @@
 import { TopBar } from '../items/TopBar';
 
-function GenericView(props) {
-    const { Component, items, setter, creation, title, item } = props;
+
 
 
 function GenericView(props){
