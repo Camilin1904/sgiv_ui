@@ -77,6 +77,7 @@ function ViewClients() {
         creation = {handleCreateClient}
         title = 'Clientes'
         item = 'Identificación'
+        canCreate = {true}
         ></GenericView>
     );
 }

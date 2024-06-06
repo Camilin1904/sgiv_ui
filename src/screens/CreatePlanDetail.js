@@ -8,11 +8,20 @@ function CreatePlanDetail() {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const [name, setName] = useState(localStorage.getItem('pdname'))
+    useEffect(()=>{
+        localStorage.setItem('pdname', name)
+    }, [name])
     const [value, setValue] = useState(localStorage.getItem('pdvalue'))
+    useEffect(()=>{
+        localStorage.setItem('pdvalue', value)
+    }, [value])
     const [days, setDays] = useState(localStorage.getItem('pddays'))
-    const [dest, setDest] = useState(localStorage.getItem('pddest'))
-    const [meals, setMeals] = useState(localStorage.getItem('pdmeals'))
-    const [transport, setTransport] = useState(localStorage.getItem('pdtransport'))
+    useEffect(()=>{
+        localStorage.setItem('pddays', days)
+    }, [days])
+    const [dest, setDest] = useState(JSON.parse(localStorage.getItem('pddest')))
+    const [meals, setMeals] = useState(JSON.parse(localStorage.getItem('pdmeals')))
+    const [transport, setTransport] = useState(JSON.parse(localStorage.getItem('pdtransport')))
     const [hotel, setHotel] = useState(localStorage.getItem('pdhotel'))
 
     function isDest(){
@@ -21,7 +30,26 @@ function CreatePlanDetail() {
             return 'Seleccione un Destino'
         }
         else{
-            return dest
+            return dest.name
+        }
+    }
+
+    function isMeal(){
+        if(!meals){
+            return 'Seleccione un plan de alimentación'
+        }
+        else{
+            return meals.name
+        }
+    }
+
+    function isTransport(){
+        console.log(transport)
+        if(!transport){
+            return 'Seleccione un plan de transporte'
+        }
+        else{
+            return transport.name
         }
     }
 
@@ -52,42 +80,42 @@ function CreatePlanDetail() {
                                         <div id='form-table'>
                                             <div class='colform'>
                                                 <label class="textr inform"  required>Nombre:</label>
-                                                <input class="textr inform" required type='text' placeholder='Nombre'></input>
+                                                <input class="textr inform" required type='text' placeholder='Nombre' onBlur={(name)=>setName(name)}></input>
                                                 <label class="textr inform"  required>Numero de dias:</label>
-                                                <input class="textr inform" required type='number' placeholder='Numero de dias'></input>
+                                                <input class="textr inform" required type='number' placeholder='Numero de dias' onBlur={(days)=>setDays(days)}></input>
                                                 <br />
-                                                <label class="textr inform"  required>Numero de noches:</label>
+                                                <label class="textr inform"  required>Numero de noches:{days-1}</label>
                                                 <label class="textr inform"  required>Destino:</label>
                                                 <button
                                                         required
                                                         class="textr inform" 
                                                         type='button'
-                                                    >
+                                                        onClick={()=>navigate('/select-destination')}>
                                                         {isDest()}
                                                         
                                                 </button>
                                             </div>
                                             <div class='colform'>
                                                 <label class="textr inform"  required>Valor:</label>
-                                                <input class="textr inform" required placeholder='Valor'></input>
+                                                <input class="textr inform" required placeholder='Valor' onBlur={(value)=>setValue(value)}></input>
                                                 <label class="textr inform"  required>Alimentación:</label>
-                                                <select
+                                                <button
                                                         required
-                                                        onChange={null}
                                                         class="textr inform" 
-                                                    >
-                                                        <option value="" disabled selected>Seleccione un plan de alimentacion</option>
+                                                        type='button'
+                                                        onClick={()=>navigate('/select-meals')}>
+                                                        {isMeal()}
                                                         
-                                                </select>
+                                                </button>
                                                 <label class="textr inform"  required>Transporte:</label>
-                                                <select
+                                                <button
                                                         required
-                                                        onChange={null}
                                                         class="textr inform" 
-                                                    >
-                                                        <option value="" disabled selected>Seleccione un plan de transporte</option>
+                                                        type='button'
+                                                        onClick={()=>navigate('/select-transportation')}>
+                                                        {isTransport()}
                                                         
-                                                </select>
+                                                </button>
                                             </div>
                                         </div>
                                         

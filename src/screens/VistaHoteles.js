@@ -75,6 +75,7 @@ function ViewHotels() {
         creation = {handleCreateHotel}
         title = 'Hoteles'
         item = 'Hotel'
+        canCreate = {true}
         ></GenericView>
     );
 }

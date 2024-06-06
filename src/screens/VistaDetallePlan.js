@@ -9,9 +9,10 @@ import { GenericView } from './GenericView';
 function ViewPlanDetail(){
     const navigate = useNavigate()
     const username = localStorage.getItem('username')
-    const handleLogout = () => {
-      navigate('/')
-    };
+    
+    function handleCreation(){
+        navigate('/create-plan-detail')
+    }
 
 
     const [planDetails, setPlanDetails] = useState([]);
@@ -77,9 +78,10 @@ function ViewPlanDetail(){
         Component = {PlanDetailItem}
         items = {planDetails}
         setter = {setName}
-        creation = {handleLogout}
+        creation = {handleCreation}
         title = 'Detalles plan'
         item = 'Detalle plan'
+        canCreate = {true}
         ></GenericView>
     )
 }

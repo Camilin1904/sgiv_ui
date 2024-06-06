@@ -26,6 +26,9 @@ import { CrearDestino } from './screens/CrearDestino';
 import { CreatePlanDetail } from './screens/CreatePlanDetail';
 import { OnlyViewPlanDetail } from './screens/OnlyViewPlanDetail';
 import { OnlyViewDestinations } from './screens/OnlyViewDestinations';
+import { SelectDestinations } from './screens/formsParts/SelectDestination';
+import { SelectMeals } from './screens/formsParts/SelectMeals';
+import { SelectTransportation } from './screens/formsParts/SelectTransportation';
 
 function App() {
   return(
@@ -51,7 +54,9 @@ function App() {
       <Route path='/create-user' element={<CrearUsuario/>}/>
       <Route path='/create-destination' element={<CrearDestino/>}/>
       <Route path='/create-plan-detail' element={<CreatePlanDetail/>}/>
-
+      <Route path='/select-destination' element={<SelectDestinations/>}/>
+      <Route path='/select-meals' element={<SelectMeals/>}/>
+      <Route path='/select-transportation' element={<SelectTransportation/>}/>
     </Routes>
   )
 }

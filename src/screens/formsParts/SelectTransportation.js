@@ -1,29 +1,28 @@
 import { useNavigate } from 'react-router-dom';
-import '../css/vistaClientes.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { UserItem } from '../items/UserItem';
-import { GenericView } from './GenericView';
+import { SelectDestinationItem } from '../../items/SelectDestinationItem';
+import { GenericView } from '../GenericView';
+import { SelectTransportationItem } from '../../items/SelectTransportationItem';
 
-function ViewUsers() {
+function SelectTransportation() {
     const navigate = useNavigate();
 
-    const handleCreateUser = () => {
-        navigate('/create-user');
-    };
-
-    const [users, setUsers] = useState([]);
+    const [transportation, setTransportation] = useState([]);
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
+    const [name, setName] = useState(null);
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchTransportation = async () => {
+            if(!name & name != null){
+                setName(null)
+            }
             try {
                 const response = await axios.post(
-                    'http://localhost:9092/users/page_user',
+                    'http://localhost:9092/transportation/page_transportation',
                     {
-                        idNum: null,
-                        type: null,
+                        name: name,
                         status: 'Active',
                         size: 10,
                         page: 0,
@@ -35,16 +34,16 @@ function ViewUsers() {
                         },
                     }
                 );
-                console.log(response.data);
-                setUsers(response.data);
+                console.log(response);
+                setTransportation(response.data);
             } catch (error) {
                 console.log(error);
             }
         };
 
-        const countUsers = async () => {
+        const countTransportation = async () => {
             try {
-                const response = await axios.get('http://localhost:9092/users/count', {
+                const response = await axios.get('http://localhost:9092/transportation/count', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -55,21 +54,21 @@ function ViewUsers() {
             }
         };
 
-        countUsers();
-        fetchUsers();
-    }, [token]);
+        countTransportation();
+        fetchTransportation();
+    }, [token, name]);
 
     return (
         <GenericView
-        Component = {UserItem}
-        items = {users}
-        setter = {null}
-        creation = {handleCreateUser}
-        title = 'Usuarios'
-        item = 'Usuario'
-        canCreate = {true}
+        Component = {SelectTransportationItem}
+        items = {transportation}
+        setter = {setName}
+        creation = {null}
+        title = 'Transporte'
+        item = 'Nombre'
+        canCreate = {false}
         ></GenericView>
     );
 }
 
-export { ViewUsers };
+export { SelectTransportation };

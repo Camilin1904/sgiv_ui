@@ -3,6 +3,30 @@ import { TopBar } from '../items/TopBar';
 function GenericView(props) {
     const { Component, items, setter, creation, title, item } = props;
 
+
+function GenericView(props){
+    const Component = props.Component
+    const items = props.items
+    const setter = props.setter
+    const creation = props.creation
+    const title = props.title
+    const item = props.item
+    const canCreate = props.canCreate
+
+    function create(){
+        console.log(canCreate)
+        if (canCreate){
+            return (
+                <div className="gjs-cell" id="ivtoj3">
+                    <button type="button" id="ivslaq" onClick={creation}>Crear</button>
+                </div>
+            )
+        }
+        else{
+            return (<></>)
+        }
+    }
+
     return (
         <div id="ii2r">
             <TopBar title={title} />
@@ -26,6 +50,7 @@ function GenericView(props) {
                                                         <button type="button" id="ivslaq" onClick={creation}>Crear</button>
                                                     </div>
                                                 )}
+                                                {create()}
                                             </div>
                                         </div>
                                     </div>
