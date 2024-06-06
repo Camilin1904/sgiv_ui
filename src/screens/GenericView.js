@@ -1,5 +1,8 @@
 import { TopBar } from '../items/TopBar';
 
+function GenericView(props) {
+    const { Component, items, setter, creation, title, item } = props;
+
 
 function GenericView(props){
     const Component = props.Component
@@ -37,8 +40,16 @@ function GenericView(props){
                                         <div id="i4o0i" className="gjs-cell">
                                             <div className="gjs-row" id="i6rii7">
                                                 <div className="gjs-cell" id="i0ak2w">
-                                                    <input type="text" id="im30us" placeholder={item} onChange={dest=>setter(dest.target.value)}/>
+                                                    <input type="text" id="im30us" placeholder={item} onChange={dest => setter(dest.target.value)} />
                                                 </div>
+                                                <div className="gjs-cell" id="idgqzc">
+                                                    <button type="button" id="i1aomg"></button>
+                                                </div>
+                                                {creation!=false && (
+                                                    <div className="gjs-cell" id="ivtoj3">
+                                                        <button type="button" id="ivslaq" onClick={creation}>Crear</button>
+                                                    </div>
+                                                )}
                                                 {create()}
                                             </div>
                                         </div>
@@ -47,9 +58,7 @@ function GenericView(props){
                                         <div className="gjs-cell" id="izbov7">
                                             <div className="gjs-row1" id="plan-list">
                                                 {items.map((item) => (
-                                                    <Component
-                                                        props={item}
-                                                    />
+                                                    <Component key={item.id} props={item} onEdit={creation} />
                                                 ))}
                                             </div>
                                         </div>
@@ -87,4 +96,3 @@ function GenericView(props){
 }
 
 export { GenericView }
-

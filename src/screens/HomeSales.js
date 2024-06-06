@@ -1,82 +1,109 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../css/homeViewer.css';
-import logo from '../img/logo.png';
 import { TopBar } from '../items/TopBar';
 
+function HomeSales() {
+    const navigate = useNavigate();
+    const username = localStorage.getItem('username');
+    const token = localStorage.getItem('token');
+    const [imageSrc, setImageSrc] = useState('');
 
-function HomeSales(){
-    const navigate = useNavigate()
-    const username = localStorage.getItem('username')
-    const token = localStorage.getItem('token')
+    useEffect(() => {
+        const fetchRandomImage = async () => {
+            try {
+                const response = await axios.get('http://localhost:9092/destination/rand_image', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                setImageSrc(response.data.image);
+            } catch (error) {
+                console.error('Error fetching random image:', error);
+            }
+        };
+
+        fetchRandomImage();
+    }, [token]);
+
     const handleLogout = () => {
-      navigate('/')
+        navigate('/');
     };
 
-    const toPlanDetails = () =>{
-      navigate('/view-plan-detail');
+    const toPlanDetails = () => {
+        navigate('/only-view-plan-details');
+    };
+
+    const toDestinations = () => {
+        navigate('/only-view-destinations');
+    };
+
+    const toCreateClient = () => {
+        navigate('/create-client');
     };
 
     return (
-        <body id="ii2r">
-        <TopBar title={''} />
-        <div id="ipbh" class="gjs-row">
-          <div class="gjs-cell">
-            <div id="igqg" class="gjs-row">
-              <div class="gjs-cell">
-                <div id="ix0m" class="gjs-row">
-                  <div id="iagje" class="gjs-cell">
-                    <div id="ie43l">Bienvenido (ventas), {username}
-                    </div>
-                  </div>
-                  <div id="ij1vb" class="gjs-cell">
-                    <div id="isr62" class="gjs-row">
-                      <div class="gjs-cell" id="im38n">
-                        <button type="button" id="ihcz4" onClick={toPlanDetails} class="boton">Ver planes</button>
-                      </div>
-                    </div>
-                    <div id="ifpef" class="gjs-row">
-                      <div class="gjs-cell" id="imhol">
-                        <button type="button" id="ix8nz" class="boton">Ver destinos</button>
-                      </div>
-                    </div>
-                    <div id="iq8ek" class="gjs-row">
-                      <div class="gjs-cell" id="iq0k6">
-                        <button type="button" id="iv92q" class="boton">Registrar cliente</button>
-                      </div>
-                    </div>
-                    <div id="iwtke" class="gjs-row">
-                      <div class="gjs-cell" id="ijpuy">
-                        <button type="button" id="if9va" class="boton">Vender plan</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="ikv4" class="gjs-cell">
-                <div id="ilxmp" class="gjs-row">
-                  <div id="i1axm" class="gjs-cell">
-                    <div id="iwo55" class="gjs-row">
-                      <div id="i4o0i" class="gjs-cell">
-                        <div id="iri2j" class="gjs-row">
-                          <div id="i1hnz" class="gjs-cell">
-                            <div id="irp45">Recomendaciones
-                              <br/>
+        <div id="ii2r">
+            <TopBar title={''} />
+            <div id="ipbh" className="gjs-row">
+                <div className="gjs-cell">
+                    <div id="igqg" className="gjs-row">
+                        <div className="gjs-cell">
+                            <div id="ix0m" className="gjs-row">
+                                <div id="iagje" className="gjs-cell">
+                                    <div id="ie43l">Bienvenido (ventas), {username}</div>
+                                </div>
+                                <div id="ij1vb" className="gjs-cell">
+                                    <div id="isr62" className="gjs-row">
+                                        <div className="gjs-cell" id="im38n">
+                                            <button type="button" id="ihcz4" onClick={toPlanDetails} className="boton">Ver planes</button>
+                                        </div>
+                                    </div>
+                                    <div id="ifpef" className="gjs-row">
+                                        <div className="gjs-cell" id="imhol">
+                                            <button type="button" id="ix8nz" onClick={toDestinations} className="boton">Ver destinos</button>
+                                        </div>
+                                    </div>
+                                    <div id="iq8ek" className="gjs-row">
+                                        <div className="gjs-cell" id="iq0k6">
+                                            <button type="button" id="iv92q" onClick={toCreateClient} className="boton">Registrar cliente</button>
+                                        </div>
+                                    </div>
+                                    <div id="iwtke" className="gjs-row">
+                                        <div className="gjs-cell" id="ijpuy">
+                                            <button type="button" id="if9va" className="boton">Vender plan</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
+                        <div id="ikv4" className="gjs-cell">
+                            <div id="ilxmp" className="gjs-row">
+                                <div id="i1axm" className="gjs-cell">
+                                    <div id="iwo55" className="gjs-row">
+                                        <div id="i4o0i" className="gjs-cell">
+                                            <div id="iri2j" className="gjs-row">
+                                                <div id="i1hnz" className="gjs-cell">
+                                                    <div id="irp45">Recomendaciones<br /></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="iuuwh" className="gjs-row"></div>
+                                    <div className="gjs-row" id="ieh7d">
+                                        <div className="gjs-cell">
+                                            {imageSrc && <img id="if6p3" src={imageSrc} alt="Random Destination" />}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="iuuwh" class="gjs-row">
-                    </div>
-                    <img id="if6p3" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+"/>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </body>
-    )
+    );
 }
 
-export {HomeSales}
+export { HomeSales };
