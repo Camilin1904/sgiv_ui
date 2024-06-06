@@ -44,11 +44,6 @@ function GenericView(props){
                                                 <div className="gjs-cell" id="idgqzc">
                                                     <button type="button" id="i1aomg"></button>
                                                 </div>
-                                                {creation!=false && (
-                                                    <div className="gjs-cell" id="ivtoj3">
-                                                        <button type="button" id="ivslaq" onClick={creation}>Crear</button>
-                                                    </div>
-                                                )}
                                                 {create()}
                                             </div>
                                         </div>
