@@ -24,6 +24,8 @@ import { ViewUsers } from './screens/UserScreen';
 import { CrearUsuario } from './screens/CrearUsuario';
 import { CrearDestino } from './screens/CrearDestino';
 import { CreatePlanDetail } from './screens/CreatePlanDetail';
+import { OnlyViewPlanDetail } from './screens/OnlyViewPlanDetail';
+import { OnlyViewDestinations } from './screens/OnlyViewDestinations';
 
 function App() {
   return(
@@ -35,7 +37,9 @@ function App() {
       <Route path='/view-clients' element={<ViewClients/>} />
       <Route path='/view-plans' element={<ViewPlan/>} />
       <Route path='/view-plan-details' element={<ViewPlanDetail/>} />
+      <Route path='/only-view-plan-details' element={<OnlyViewPlanDetail/>} />
       <Route path='/view-destinations' element={<ViewDestinations/>}/>
+      <Route path='/only-view-destinations' element={<OnlyViewDestinations/>}/>
       <Route path='/view-hotels' element={<ViewHotels/>}/>
       <Route path='/view-meals' element={<ViewMeals/>}/>
       <Route path='/view-transportation' element={<ViewTransportation/>}/>

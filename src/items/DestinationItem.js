@@ -6,55 +6,34 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 function DestinationItem(props) {
     const dest = props.props;
-    const [imgs, setImgs] = useState([]);
     const token = localStorage.getItem('token');
-
-    useEffect(() => {
-        const fetchImgs = async () => {
-            try {
-                const response = await axios.post(
-                    'http://localhost:9092/destination/dest_img',
-                    {
-                        id: dest.id
-                    },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
-                console.log(response.data);
-                setImgs(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchImgs();
-    }, [dest.id, token]);
+    const onEdit = props.onEdit;
 
     return (
-          <table>
-            <td class='dest-items'>
-                  <div class='dest-tittle'>
-                    <h1 className='DestinationItem-name'>{dest.name}</h1>
-                  </div>
-                  <div class='buttons'>
-                      <button class='more-info'>Mas Información</button>
-                      <button class='edit'>Editar</button>
-                  </div>
-              
-            </td>
-            <td>
-              <Carousel showThumbs={true}>
-                  {imgs.map((image, index) => (
-                      <div key={index}>
-                          <img src={image.image} alt={`${dest.name} ${index + 1}`} />
-                      </div>
-                  ))}
-              </Carousel>
-            </td>
-          </table>
+        <table>
+            <tbody>
+                <tr>
+                    <td className='dest-items'>
+                        <div className='dest-tittle'>
+                            <h1 className='DestinationItem-name'>{dest.name}</h1>
+                        </div>
+                        <div className='buttons'>
+                            <button className='more-info'>Más Información</button>
+                            {onEdit!=false && <button className='edit'>Editar</button>}
+                        </div>
+                    </td>
+                    <td>
+                        <Carousel showThumbs={true}>
+                            {dest.images.map((image, index) => (
+                                <div key={index}>
+                                    <img src={image.image} alt={`${dest.name} ${index + 1}`} />
+                                </div>
+                            ))}
+                        </Carousel>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     );
 }
 
