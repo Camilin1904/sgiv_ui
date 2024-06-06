@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../css/crearCliente.css';
+import '../css/crearUsuario.css';
 import { TopBar } from '../items/TopBar';
 import axios from 'axios';
 
@@ -62,24 +62,24 @@ function CrearUsuario() {
 
     return (
         <div id="ii2r">
-            <TopBar title={'Registrar Cliente'} />
+            <TopBar title={'Registrar Usuario'} />
             <div id="ipbh" className="gjs-row">
                 <div id="iw09o" className="gjs-cell">
                     <div id="igqg" className="gjs-row">
                         <div id="is6bi" className="gjs-row">
                             <form onSubmit={crearCliente}>
                                 <div id="ib7yb" className="gjs-cell">
-                                    <div id="ijwtz" className="gjs-row" style={{height: '10vh'}}>
+                                    <div id="ijwtz" className="gjs-row" style={{height: '15vh'}}>
                                         <div id="ioj32" className="gjs-cell" style={{height: '10vh'}}>
-                                            <div id="ia4mh">Ingrese la información del cliente</div>
+                                            <div id="ia4mh">Ingrese la información del usuario</div>
                                         </div>
                                         <div id="iqf2j" className="gjs-cell" style={{height: '10vh'}}>
                                             <button type="submit" id="in3fl">Registrar</button>
                                         </div>
                                     </div>
-                                    <div id="iqx84" className="gjs-row" style={{height: '30vh'}}>
-                                        <div className="gjs-cell" style={{height: '30vh'}}>
-                                            <div id="igaf4" className="gjs-row" style={{height: '30vh'}}>
+                                    <div id="iqx84" className="gjs-row">
+                                        <div className="gjs-cell">
+                                            <div id="igaf4a" className="gjs-row">
                                                 <div id="i0cl5" className="gjs-cell">
                                                     <div id="ityxu" className="texto">Nombre de usuario</div>
                                                     <input

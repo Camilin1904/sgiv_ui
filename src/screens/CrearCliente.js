@@ -95,8 +95,8 @@ function CrearCliente() {
                                             <button type="submit" id="in3fl">Registrar</button>
                                         </div>
                                     </div>
-                                    <div id="iqx84" className="gjs-row" style={{height: '30vh'}}>
-                                        <div className="gjs-cell" style={{height: '30vh'}}>
+                                    <div id="iqx84" className="gjs-row">
+                                        <div className="gjs-cell">
                                             <div id="igaf4" className="gjs-row" style={{height: '30vh'}}>
                                                 <div id="i0cl5" className="gjs-cell">
                                                     <div id="ityxu" className="texto">Nombre</div>
@@ -122,8 +122,8 @@ function CrearCliente() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="gjs-cell" style={{height: '30vh'}}>
-                                            <div id="i56sl" className="gjs-row" style={{height: '30vh'}}>
+                                        <div className="gjs-cell">
+                                            <div id="i56sl" className="gjs-row">
                                                 <div className="gjs-cell" id="ime4x">
                                                     <div id="iddaz" className="textr">Sexo</div>
                                                     <div id="i03df" className="gjs-row">
