@@ -103,7 +103,7 @@ function Details() {
   };
 
   return (
-    <div id="detailsPage">
+    <div id="ii2r">
       <TopBar title={'Detalles'} />
       <div id="detailsContainer" className="gjs-row">
         <div id="planDetails" className="gjs-cell">
