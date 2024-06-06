@@ -11,6 +11,8 @@ function ViewPlan() {
     const [plans, setPlans] = useState([]);
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
+    const [page, setPage] = useState(localStorage.getItem('page'))
+    const [maxPage, setMaxPage] = useState(0)
 
     useEffect(() => {
         const fetchPlans = async () => {
@@ -39,12 +41,29 @@ function ViewPlan() {
             }
         };
 
-        const countPlans = async () => {
+        const countPlans= async () => {
             try {
-                const response = await axios.get('http://localhost:9092/plan/count', {
+                const response = await axios.post('http://localhost:9092/plan/countFilter',{
+                    code: null,
+                    tvm: null,
+                    tvl: null,
+                    clientName: null,
+                    size: 10,
+                    page: 0,
+                }, 
+                {
+                    
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
+                })
+                .then(response=>response.data)
+                .then((count)=>{
+                    if(count>0){
+                        console.log('adadasdasd')
+                        console.log(count)
+                        setMaxPage(count)
+                    }
                 });
                 setNum(response.data);
             } catch (error) {
@@ -68,6 +87,8 @@ function ViewPlan() {
         title = 'Planes'
         item = 'Plan'
         canCreate = {true}
+        maxPage = {maxPage}
+        page = {page}
         ></GenericView>
     );
 }

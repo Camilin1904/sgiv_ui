@@ -11,6 +11,9 @@ function GenericView(props){
     const title = props.title
     const item = props.item
     const canCreate = props.canCreate
+    const maxPage = props.maxPage
+    const page = props.page
+    localStorage.setItem('page', page)
 
     function create(){
         console.log(canCreate)
@@ -19,6 +22,47 @@ function GenericView(props){
                 <div className="gjs-cell" id="ivtoj3">
                     <button type="button" id="ivslaq" onClick={creation}>Crear</button>
                 </div>
+            )
+        }
+        else{
+            return (<></>)
+        }
+    }
+    function isNext(){
+        
+        if(maxPage>parseInt(page)+1){
+            return (
+            <button id="isdsj6" onClick={() =>{localStorage.getItem('page')<maxPage?localStorage.setItem('page', parseInt(page)+1):console.log(maxPage)}}>Siguiente</button>
+            )
+        }
+        else{
+            return (<></>)
+        }
+    }
+
+    function isPrev(){
+        if(0<parseInt(page)){
+            console.log(page)
+            return (
+                <button  onClick={() =>{localStorage.getItem('page')>0?localStorage.setItem('page', parseInt(page)-1):console.log(maxPage)}} id="if0ynj">Anterior</button>
+            )
+        }
+        else{
+            return (<></>)
+        }
+    }
+
+    function isMore(){
+        if(0<parseInt(page) | maxPage>parseInt(page)+1){
+            return (
+                <>
+                <div className="gjs-cell" id="ihtxki">
+                    <input type="text" id="i46s8v" defaultValue = {parseInt(page)+1}/>
+                </div>
+                <div className="gjs-cell" id="i9i75f">
+                    <button type="summit" id="inpm0j" onClick={()=>{document.getElementById('i46s8v').value>0&maxPage>parseInt(document.getElementById('i46s8v').value)-1?localStorage.setItem('page', parseInt(document.getElementById('i46s8v').value)-1):console.log("")}}></button>
+                </div>
+                </>
             )
         }
         else{
@@ -61,25 +105,23 @@ function GenericView(props){
                             </div>
                             <div className="gjs-row" id="i39ss1">
                                 <div className="gjs-cell" id="istsko">
+                                    <form>
                                     <div className="gjs-row" id="iu7isy">
                                         <div className="gjs-cell" id="i6hi6h">
-                                            <button type="button" id="if0ynj">Anterior</button>
+                                            {isPrev()}
                                         </div>
                                         <div className="gjs-cell" id="ixsnst">
                                             <div className="gjs-row" id="i89pat">
-                                                <div className="gjs-cell" id="ihtxki">
-                                                    <input type="text" id="i46s8v" />
-                                                </div>
-                                                <div className="gjs-cell" id="i9i75f">
-                                                    <button type="button" id="inpm0j"></button>
-                                                </div>
+                                                {isMore()}
                                             </div>
                                         </div>
                                         <div className="gjs-cell" id="izlfvz">
-                                            <button type="button" id="isdsj6">Siguiente</button>
+                                            {isNext()}
                                         </div>
                                     </div>
+                                    </form>
                                 </div>
+                                <label>Page {parseInt(page)+1} out of {maxPage}</label>
                             </div>
                         </div>
                     </div>

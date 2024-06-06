@@ -21,6 +21,8 @@ function ViewClients() {
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
     const [id, setID] = useState(null);
+    const [page, setPage] = useState(localStorage.getItem('page')?localStorage.getItem('page'):0)
+    const [maxPage, setMaxPage] = useState(0)
 
     useEffect(() => {
         if(!id){
@@ -36,7 +38,7 @@ function ViewClients() {
                         bDateUpper: null,
                         status: 'Active',
                         size: 10,
-                        page: 0,
+                        page: page,
                     },
                     {
                         headers: {
@@ -54,10 +56,27 @@ function ViewClients() {
 
         const countClients = async () => {
             try {
-                const response = await axios.get('http://localhost:9092/client/count', {
+                const response = await axios.post('http://localhost:9092/client/countFilter',{
+                    idNum: id,
+                    bDateLower: null,
+                    bDateUpper: null,
+                    status: 'Active',
+                    size: 10,
+                    page: page,
+                }, 
+                {
+                    
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
+                })
+                .then(response=>response.data)
+                .then((count)=>{
+                    if(count>0){
+                        console.log('adadasdasd')
+                        console.log(count)
+                        setMaxPage(count)
+                    }
                 });
                 setNum(response.data);
             } catch (error) {
@@ -67,7 +86,7 @@ function ViewClients() {
 
         countClients();
         fetchClients();
-    }, [token, id]);
+    }, [token, id, page]);
 
     return  (
         <GenericView
@@ -78,6 +97,8 @@ function ViewClients() {
         title = 'Clientes'
         item = 'Identificación'
         canCreate = {true}
+        maxPage = {maxPage}
+        page = {page}
         ></GenericView>
     );
 }

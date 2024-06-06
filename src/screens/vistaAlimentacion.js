@@ -23,6 +23,9 @@ function ViewMeals() {
     const [mealName, setMealName] = useState(null)
     //const [search, setSearch] = useState(false)
 
+    const [page, setPage] = useState(localStorage.getItem('page'))
+    const [maxPage, setMaxPage] = useState(0)
+
     useEffect(() => {
         console.log(mealName)
         if (!mealName){
@@ -36,7 +39,7 @@ function ViewMeals() {
                         name: mealName,
                         status: 'Active',
                         size: 10,
-                        page: 0,
+                        page: page,
                     },
                     {
                         headers: {
@@ -52,12 +55,27 @@ function ViewMeals() {
             }
         };
 
-        const countMeals = async () => {
+        const countMeals= async () => {
             try {
-                const response = await axios.get('http://localhost:9092/meals/count', {
+                const response = await axios.post('http://localhost:9092/meals/countFilter',{
+                    name: mealName,
+                    status: 'Active',
+                    size: 10,
+                    page: 0,
+                }, 
+                {
+                    
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
+                })
+                .then(response=>response.data)
+                .then((count)=>{
+                    if(count>0){
+                        console.log('adadasdasd')
+                        console.log(count)
+                        setMaxPage(count)
+                    }
                 });
                 setNum(response.data);
             } catch (error) {
@@ -78,6 +96,8 @@ function ViewMeals() {
         title = 'Alimentacion'
         item = 'Nombre'
         canCreate = {true}
+        maxPage = {maxPage}
+        page = {page}
         ></GenericView>
     );
 }
