@@ -106,7 +106,7 @@ function HomeAdmin(){
     }
 
     return (
-      <body id="ii2r">
+      <>
       <TopBar title={''} />
       <div id="ipbh" class="gjs-row">
         <div class="gjs-cell">
@@ -227,7 +227,7 @@ function HomeAdmin(){
           </div>
         </div>
       </div>
-    </body>
+      </>
     );
 }
 
