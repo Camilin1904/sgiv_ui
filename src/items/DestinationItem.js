@@ -17,10 +17,6 @@ function DestinationItem(props) {
                         <div className='dest-tittle'>
                             <h1 className='DestinationItem-name'>{dest.name}</h1>
                         </div>
-                        <div className='buttons'>
-                            <button className='more-info'>Más Información</button>
-                            {onEdit!=false && <button className='edit'>Editar</button>}
-                        </div>
                     </td>
                     <td>
                         <Carousel showThumbs={true}>

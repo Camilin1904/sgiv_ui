@@ -41,16 +41,6 @@ function PlanItem({ props, onEdit }) {
                         </table>
                     </div>
                 </div>
-                <div className="gjs-cell" id="i0i4xc">
-                    <div id="imv6n-3" className="gjs-cell">
-                        <div id="ihhc9-3" className="gjs-cell1">
-                            <button type="button" id="ih3zn-3" style={{ width: '100%', marginBottom: '2vh', height: '3vh' }}>Más Info</button>
-                        </div>
-                        {(onEdit !== false) && (
-                            <button type="button" id="idwt7-3" style={{ width: '100%', height: '3vh' }}>Editar</button>
-                        )}
-                    </div>
-                </div>
             </div>
             <br />
         </>

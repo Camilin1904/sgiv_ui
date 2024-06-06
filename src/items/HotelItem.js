@@ -39,10 +39,6 @@ function HotelItem(props) {
                   <div class='dest-tittle'>
                     <h1 className='DestinationItem-name'>{hotels.name}</h1>
                   </div>
-                  <div class='buttons'>
-                      <button class='more-info'>Mas Información</button>
-                      <button class='edit'>Editar</button>
-                  </div>
               
             </td>
             <td>

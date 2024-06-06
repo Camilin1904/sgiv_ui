@@ -18,7 +18,6 @@ function TransportationItem(props) {
             </table>
           </div>
         </div>
-        <button class='edit-button'>Editar</button>
       </div>
       <br />
     </>
