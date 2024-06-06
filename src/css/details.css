@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  .gjs-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    padding: 10px;
+  }
+  
+  .gjs-cell {
+    min-height: 75px;
+    flex-grow: 1;
+    flex-basis: 100%;
+  }
+  
+  #detailsPage {
+    background-color: #f4f4f9;
+    padding: 20px;
+  }
+  
+  #detailsContainer {
+    padding: 0;
+  }
+  
+  #planDetails, #chartContainer, #topClientsContainer, #backButtonContainer {
+    flex-basis: 100%;
+    padding: 20px;
+  }
+  
+  #planDetails h2, #chartContainer h2, #topClientsContainer h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #planDetails p, #topClientsContainer ul li {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  #topClientsContainer ul {
+    padding-left: 20px;
+  }
+  
+  #chartContainer {
+    height: 400px;
+  }
+  
+  #backButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+  
+  #backButtonContainer button {
+    border-radius: 15px;
+    background-image: linear-gradient(#0159a1 0%, #0159a1 100%);
+    color: white;
+    font-size: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .centrado-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  @media (max-width: 992px) {
+    .gjs-row {
+      flex-wrap: wrap;
+    }
+  }
+  
