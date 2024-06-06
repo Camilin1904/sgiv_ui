@@ -23,11 +23,12 @@ function CrearCliente() {
     const [user, setUser] = useState(null);
     const [idTypes, setIdTypes] = useState([]);
     const [idType, setIdType] = useState(null);
+    
 
 
     useEffect(() => {
         const fetchIdTypes = async () => {
-            await axios.get('http://localhost:9092/users/idTypes', {
+            await axios.get('http://localhost:9092/client/idTypes', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

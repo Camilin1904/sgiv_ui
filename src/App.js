@@ -23,6 +23,7 @@ import { ViewTransportation } from './screens/vistaTransporte';
 import { ViewUsers } from './screens/UserScreen';
 import { CrearUsuario } from './screens/CrearUsuario';
 import { CrearDestino } from './screens/CrearDestino';
+import { CreatePlanDetail } from './screens/CreatePlanDetail';
 
 function App() {
   return(
@@ -40,13 +41,12 @@ function App() {
       <Route path='/view-transportation' element={<ViewTransportation/>}/>
       <Route path='/view-users' element={<ViewUsers/>}/>
       <Route path='/create-client' element={<CrearCliente/>}/>
-      <Route path='/create-plan-detail' element={<crearDetallePlan/>}/>
       <Route path='/create-plan' element={<CreatePlan/>}/>
       <Route path='/create-transportation' element={<CrearTransporte/>}/>
       <Route path='/create-meal' element={<CrearAlimentacion/>}/>
       <Route path='/create-user' element={<CrearUsuario/>}/>
       <Route path='/create-destination' element={<CrearDestino/>}/>
-
+      <Route path='/create-plan-detail' element={<CreatePlanDetail/>}/>
 
     </Routes>
   )
