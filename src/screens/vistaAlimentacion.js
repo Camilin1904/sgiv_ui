@@ -77,6 +77,7 @@ function ViewMeals() {
         creation = {handleCreateMeals}
         title = 'Alimentacion'
         item = 'Nombre'
+        canCreate = {true}
         ></GenericView>
     );
 }

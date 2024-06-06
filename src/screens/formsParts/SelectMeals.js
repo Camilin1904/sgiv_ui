@@ -1,29 +1,29 @@
 import { useNavigate } from 'react-router-dom';
-import '../css/vistaClientes.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { UserItem } from '../items/UserItem';
-import { GenericView } from './GenericView';
+import { SelectMealsItem } from '../../items/SelectMealsItem';
+import { GenericView } from '../GenericView';
 
-function ViewUsers() {
+function SelectMeals() {
     const navigate = useNavigate();
 
-    const handleCreateUser = () => {
-        navigate('/create-user');
-    };
-
-    const [users, setUsers] = useState([]);
+    const [meals, setMeals] = useState([]);
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
+    const [mealName, setMealName] = useState(null)
+    //const [search, setSearch] = useState(false)
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        console.log(mealName)
+        if (!mealName){
+            setMealName(null)
+        }
+        const fetchMeals = async () => {
             try {
                 const response = await axios.post(
-                    'http://localhost:9092/users/page_user',
+                    'http://localhost:9092/meals/page_meals',
                     {
-                        idNum: null,
-                        type: null,
+                        name: mealName,
                         status: 'Active',
                         size: 10,
                         page: 0,
@@ -35,16 +35,16 @@ function ViewUsers() {
                         },
                     }
                 );
-                console.log(response.data);
-                setUsers(response.data);
+                console.log(response);
+                setMeals(response.data);
             } catch (error) {
                 console.log(error);
             }
         };
 
-        const countUsers = async () => {
+        const countMeals = async () => {
             try {
-                const response = await axios.get('http://localhost:9092/users/count', {
+                const response = await axios.get('http://localhost:9092/meals/count', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -55,21 +55,21 @@ function ViewUsers() {
             }
         };
 
-        countUsers();
-        fetchUsers();
-    }, [token]);
+        countMeals();
+        fetchMeals();
+    }, [token, mealName]);
 
     return (
         <GenericView
-        Component = {UserItem}
-        items = {users}
-        setter = {null}
-        creation = {handleCreateUser}
-        title = 'Usuarios'
-        item = 'Usuario'
-        canCreate = {true}
+        Component = {SelectMealsItem}
+        items = {meals}
+        setter = {setMealName}
+        creation = {null}
+        title = 'Alimentacion'
+        item = 'Nombre'
+        canCreate = {false}
         ></GenericView>
     );
 }
 
-export { ViewUsers };
+export { SelectMeals };

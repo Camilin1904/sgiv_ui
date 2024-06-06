@@ -76,6 +76,7 @@ function ViewDestinations() {
         creation = {handleCreateDestination}
         title = 'Destinos'
         item = 'Destino'
+        canCreate = {true}
         ></GenericView>
     );
 }

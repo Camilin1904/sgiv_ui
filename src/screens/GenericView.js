@@ -8,6 +8,22 @@ function GenericView(props){
     const creation = props.creation
     const title = props.title
     const item = props.item
+    const canCreate = props.canCreate
+
+    function create(){
+        console.log(canCreate)
+        if (canCreate){
+            return (
+                <div className="gjs-cell" id="ivtoj3">
+                    <button type="button" id="ivslaq" onClick={creation}>Crear</button>
+                </div>
+            )
+        }
+        else{
+            return (<></>)
+        }
+    }
+
     return (
         <div id="ii2r">
             <TopBar title={title} />
@@ -23,12 +39,7 @@ function GenericView(props){
                                                 <div className="gjs-cell" id="i0ak2w">
                                                     <input type="text" id="im30us" placeholder={item} onChange={dest=>setter(dest.target.value)}/>
                                                 </div>
-                                                <div className="gjs-cell" id="idgqzc">
-                                                    <button type="button" id="i1aomg"></button>
-                                                </div>
-                                                <div className="gjs-cell" id="ivtoj3">
-                                                    <button type="button" id="ivslaq" onClick={creation}>Crear</button>
-                                                </div>
+                                                {create()}
                                             </div>
                                         </div>
                                     </div>

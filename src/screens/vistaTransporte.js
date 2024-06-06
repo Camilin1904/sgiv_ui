@@ -75,6 +75,7 @@ function ViewTransportation() {
         creation = {handleCreateTransportation}
         title = 'Transporte'
         item = 'Nombre'
+        canCreate = {true}
         ></GenericView>
     );
 }

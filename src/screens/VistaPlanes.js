@@ -67,6 +67,7 @@ function ViewPlan() {
         creation = {null}
         title = 'Planes'
         item = 'Plan'
+        canCreate = {true}
         ></GenericView>
     );
 }
