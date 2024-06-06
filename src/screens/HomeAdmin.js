@@ -97,8 +97,8 @@ function HomeAdmin() {
     navigate('/details');
   }
 
-  return (
-    <body id="ii2r">
+    return (
+      <>
       <TopBar title={''} />
       <div id="ipbh" class="gjs-row">
         <div class="gjs-cell">
@@ -219,8 +219,7 @@ function HomeAdmin() {
           </div>
         </div>
       </div>
-    </body>
-  );
-}
+      </>
+    );
 
 export { HomeAdmin };
