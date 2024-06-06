@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import '../css/vistaClientes.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { HotelItem } from '../items/HotelItem';
-import { GenericView } from './GenericView';
+import { GenericView } from '../GenericView';
+import { SelectHotelItem } from '../../items/SelectHotelItem';
 
-function ViewHotels() {
+function SelectHotels() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -20,6 +19,7 @@ function ViewHotels() {
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
     const [name, setName] = useState(null);
+    const dest = localStorage.getItem('pddest')
 
     useEffect(() => {
         if(!name){
@@ -28,12 +28,12 @@ function ViewHotels() {
         const fetchHotels = async () => {
             try {
                 const response = await axios.post(
-                    'http://localhost:9092/hotel/page_hotel',
+                    'http://localhost:9092/hotel/page_hotel  ',
                     {
                         name: name,
                         address: null,
                         status: 'Active',
-                        dID: null,
+                        dID: dest.id,
                         size: 10,
                         page: 0,
                     },
@@ -70,15 +70,15 @@ function ViewHotels() {
 
     return (
         <GenericView
-        Component = {HotelItem}
+        Component = {SelectHotelItem}
         items = {hotels}
         setter = {setHotels}
         creation = {handleCreateHotel}
         title = 'Hoteles'
         item = 'Hotel'
-        canCreate = {true}
+        canCreate = {false}
         ></GenericView>
     );
 }
 
-export { ViewHotels };
+export { SelectHotels };

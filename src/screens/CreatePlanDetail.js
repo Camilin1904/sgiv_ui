@@ -18,12 +18,21 @@ function CreatePlanDetail() {
     const [days, setDays] = useState(localStorage.getItem('pddays'))
     useEffect(()=>{
         localStorage.setItem('pddays', days)
+        console.log(nights)
+        if(days>0){
+            setNights(days-1)
+        }
     }, [days])
     const [dest, setDest] = useState(JSON.parse(localStorage.getItem('pddest')))
     const [meals, setMeals] = useState(JSON.parse(localStorage.getItem('pdmeals')))
     const [transport, setTransport] = useState(JSON.parse(localStorage.getItem('pdtransport')))
-    const [hotel, setHotel] = useState(localStorage.getItem('pdhotel'))
+    const [hotel, setHotel] = useState(JSON.parse(localStorage.getItem('pdhotel')))
+    const [nights, setNights] = useState(0)
+    const [numPeople, setNumPeople] = useState(localStorage.getItem('pdnumpeople'))
 
+    const [user, setUser] = useState(null)
+
+    
     function isDest(){
         
         if(!dest){
@@ -44,7 +53,6 @@ function CreatePlanDetail() {
     }
 
     function isTransport(){
-        console.log(transport)
         if(!transport){
             return 'Seleccione un plan de transporte'
         }
@@ -53,9 +61,110 @@ function CreatePlanDetail() {
         }
     }
 
+    function isHotel(){
+        if(!hotel){
+            return 'Seleccione un hotel'
+        }
+        else{
+            return hotel.name
+        }
+    }
+    
+    function showHotel(){
+        if(dest){
+            return (
+                <>
+            <label class="textr inform"  required>Hotel:</label>
+            <button
+                    required
+                    class="textr inform" 
+                    type='button'
+                    onClick={()=>navigate('/select-hotel')}>
+                    {isHotel()}
+                    
+            </button></>)
+        }
+        else{
+            return(<></>)
+        }
+    }
+
+    function showAmPe(){
+        console.log(hotel)
+        if(hotel){
+            return (
+                <>
+                    <label class="textr inform"  required>Cantidad de personas:</label>
+                    <input class="textr inform" required placeholder='Cantidad de personas' onChange={(value)=>setNumPeople(value.target.value)}></input>
+                </>)
+        }
+        else{
+            return(<></>)
+        }
+    }
     const handleLogout = () => {
         navigate('/');
     };
+
+    useEffect(()=>{
+        const userFetch =async ()=>{ 
+            await axios.get('http://localhost:9092/users/get', {
+              headers: {
+                  Authorization: `Bearer ${token}`
+              }
+          }).then(response => {setUser(response.data)});}
+          userFetch();
+    },[])
+
+    function createPlanDetail(e) {
+        console.log('aedoihsdigoiuosdfgigwqaeo;iufhaweiopghfbk;jawefgWAUIO;EFG;OQW[Ehfio')
+        e.preventDefault();
+        const createPD = async(acc) => {
+            const hotelData = {
+            id: null,
+            name: name,
+            value: value,
+            numberOfDays: days,
+            numberOfNights: nights,
+            destination: dest,
+            meals: meals,
+            transportation: transport,
+            accommodation: acc,
+            user: user,
+            status: 'Active'
+            };
+        
+            await axios.post('http://localhost:9092/plan_detail/create', hotelData, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+            });
+        };
+        const aaaa = async () => await axios.post('http://localhost:9092/plan_detail/create_acc', {
+            id:null,
+            amountOfPeople:numPeople,
+            hotel:hotel,
+            status:'Active',
+            user:user
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+
+            }).then((response)=>response.data)
+            .then((ac)=>{
+                console.log(ac)
+                createPD(ac);
+            });
+            
+        aaaa()
+        
+        
+        
+        
+        navigate('/view-plan-details')
+  
+      }
     
 
     return (
@@ -65,7 +174,7 @@ function CreatePlanDetail() {
                 <div id="iw09o" className="gjs-cell">
                     <div id="igqg" className="gjs-row">
                         <div id="is6bi" className="gjs-row">
-                            <form onSubmit={null}>
+                            <form onSubmit={createPlanDetail}>
                                 <div id="ib7yb" className="gjs-cell">
                                     <div id="ijwtz" className="gjs-row" style={{height: '10vh'}}>
                                         <div id="ioj32" className="gjs-cell" style={{height: '10vh'}}>
@@ -80,11 +189,11 @@ function CreatePlanDetail() {
                                         <div id='form-table'>
                                             <div class='colform'>
                                                 <label class="textr inform"  required>Nombre:</label>
-                                                <input class="textr inform" required type='text' placeholder='Nombre' onBlur={(name)=>setName(name)}></input>
+                                                <input class="textr inform" required type='text' placeholder='Nombre' onChange={(name)=>setName(name.target.value)}></input>
                                                 <label class="textr inform"  required>Numero de dias:</label>
-                                                <input class="textr inform" required type='number' placeholder='Numero de dias' onBlur={(days)=>setDays(days)}></input>
+                                                <input class="textr inform" required type='number' placeholder='Numero de dias' onChange={(days)=>setDays(days.target.value)}></input>
                                                 <br />
-                                                <label class="textr inform"  required>Numero de noches:{days-1}</label>
+                                                <label class="textr inform"  required>Numero de noches:{nights}</label>
                                                 <label class="textr inform"  required>Destino:</label>
                                                 <button
                                                         required
@@ -92,12 +201,12 @@ function CreatePlanDetail() {
                                                         type='button'
                                                         onClick={()=>navigate('/select-destination')}>
                                                         {isDest()}
-                                                        
                                                 </button>
+                                                {showHotel()}
                                             </div>
                                             <div class='colform'>
                                                 <label class="textr inform"  required>Valor:</label>
-                                                <input class="textr inform" required placeholder='Valor' onBlur={(value)=>setValue(value)}></input>
+                                                <input class="textr inform" required placeholder='Valor' onChange={(value)=>setValue(value.target.value)}></input>
                                                 <label class="textr inform"  required>Alimentación:</label>
                                                 <button
                                                         required
@@ -116,6 +225,7 @@ function CreatePlanDetail() {
                                                         {isTransport()}
                                                         
                                                 </button>
+                                                {showAmPe()}
                                             </div>
                                         </div>
                                         
