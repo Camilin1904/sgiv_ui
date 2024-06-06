@@ -19,6 +19,8 @@ function ViewPlanDetail(){
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
     const [name, setName] = useState(null);
+    const [page, setPage] = useState(localStorage.getItem('page'))
+    const [maxPage, setMaxPage] = useState(0)
 
     useEffect(() => {
         if(!name){
@@ -38,7 +40,7 @@ function ViewPlanDetail(){
                         valueLower: null,
                         status: 'Active',
                         size: 10,
-                        page: 0,
+                        page: page,
                     },
                     {
                         headers: {
@@ -54,18 +56,39 @@ function ViewPlanDetail(){
             }
         };
 
-        const countPlans = async () => {
+        const countPlans= async () => {
             try {
-                const response = await axios.get('http://localhost:9092/plan_detail/count', {
+                const response = await axios.post('http://localhost:9092/plan_detail/countFilter',{
+                    name: name,
+                    daysUpper: null,
+                    daysLower: null,
+                    nightsUpper: null,
+                    nightsLower: null,
+                    valueUpper: null,
+                    valueLower: null,
+                    size: 10,
+                    page: 0,
+                }, 
+                {
+                    
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
+                })
+                .then(response=>response.data)
+                .then((count)=>{
+                    if(count>0){
+                        console.log('adadasdasd')
+                        console.log(count)
+                        setMaxPage(count)
+                    }
                 });
                 setNum(response.data);
             } catch (error) {
                 console.log(error);
             }
         };
+
 
         countPlans();
         fetchPlans();
@@ -82,6 +105,8 @@ function ViewPlanDetail(){
         title = 'Detalles plan'
         item = 'Detalle plan'
         canCreate = {true}
+        maxPage = {maxPage}
+        page = {page}
         ></GenericView>
     )
 }

@@ -21,6 +21,9 @@ function ViewDestinations() {
     const token = localStorage.getItem('token');
     const [name, setName] = useState(null)
 
+    const [page, setPage] = useState(localStorage.getItem('page'))
+    const [maxPage, setMaxPage] = useState(0)
+
     useEffect(() => {
         if(!name){
             setName(null);
@@ -51,12 +54,29 @@ function ViewDestinations() {
             }
         };
 
-        const countDestinations = async () => {
+        const countDestinations= async () => {
             try {
-                const response = await axios.get('http://localhost:9092/destination/count', {
+                const response = await axios.post('http://localhost:9092/destination/countFilter',{
+                    name: name,
+                    code: null,
+                    status: 'Active',
+                    type:null,
+                    size: 10,
+                    page: 0,
+                }, 
+                {
+                    
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
+                })
+                .then(response=>response.data)
+                .then((count)=>{
+                    if(count>0){
+                        console.log('adadasdasd')
+                        console.log(count)
+                        setMaxPage(count)
+                    }
                 });
                 setNum(response.data);
             } catch (error) {
@@ -77,6 +97,8 @@ function ViewDestinations() {
         title = 'Destinos'
         item = 'Destino'
         canCreate = {true}
+        maxPage = {maxPage}
+        page = {page}
         ></GenericView>
     );
 }

@@ -20,6 +20,9 @@ function ViewHotels() {
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
     const [name, setName] = useState(null);
+    const [page, setPage] = useState(localStorage.getItem('page'))
+    const [maxPage, setMaxPage] = useState(0)
+
 
     useEffect(() => {
         if(!name){
@@ -51,12 +54,29 @@ function ViewHotels() {
             }
         };
 
-        const countHotels = async () => {
+        const countHotels= async () => {
             try {
-                const response = await axios.get('http://localhost:9092/destination/count', {
+                const response = await axios.post('http://localhost:9092/hotel/countFilter',{
+                    name: name,
+                    address: null,
+                    status: 'Active',
+                    dID: null,
+                    size: 10,
+                    page: 0,
+                }, 
+                {
+                    
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
+                })
+                .then(response=>response.data)
+                .then((count)=>{
+                    if(count>0){
+                        console.log('adadasdasd')
+                        console.log(count)
+                        setMaxPage(count)
+                    }
                 });
                 setNum(response.data);
             } catch (error) {
@@ -77,6 +97,8 @@ function ViewHotels() {
         title = 'Hoteles'
         item = 'Hotel'
         canCreate = {true}
+        maxPage = {maxPage}
+        page = {page}
         ></GenericView>
     );
 }

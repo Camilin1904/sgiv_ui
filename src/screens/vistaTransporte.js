@@ -21,6 +21,8 @@ function ViewTransportation() {
     const [num, setNum] = useState(0);
     const token = localStorage.getItem('token');
     const [name, setName] = useState(null);
+    const [page, setPage] = useState(localStorage.getItem('page'))
+    const [maxPage, setMaxPage] = useState(0)
 
     useEffect(() => {
         const fetchTransportation = async () => {
@@ -50,12 +52,27 @@ function ViewTransportation() {
             }
         };
 
-        const countTransportation = async () => {
+        const countTransportation= async () => {
             try {
-                const response = await axios.get('http://localhost:9092/transportation/count', {
+                const response = await axios.post('http://localhost:9092/transportation/countFilter',{
+                    name: name,
+                    status: 'Active',
+                    size: 10,
+                    page: 0,
+                }, 
+                {
+                    
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
+                })
+                .then(response=>response.data)
+                .then((count)=>{
+                    if(count>0){
+                        console.log('adadasdasd')
+                        console.log(count)
+                        setMaxPage(count)
+                    }
                 });
                 setNum(response.data);
             } catch (error) {
@@ -76,6 +93,8 @@ function ViewTransportation() {
         title = 'Transporte'
         item = 'Nombre'
         canCreate = {true}
+        maxPage = {maxPage}
+        page = {page}
         ></GenericView>
     );
 }
