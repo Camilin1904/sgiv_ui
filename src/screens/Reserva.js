@@ -53,24 +53,18 @@ function Reserva() {
                                         <div className="gjs-cell" style={{ height: '30vh' }}>
                                             <div id="igaf412" className="gjs-row" style={{ height: '30vh' }}>
                                                 <div id="i0cl5" className="gjs-cell3">
-                                                    <div id="ityxu" className="texto">Nombre</div>
+                                                    <div id="ityxu" className="texto">No. Identificacion</div>
                                                     <input
                                                         type="text"
                                                         id="ioow3"
                                                         required
-                                                        placeholder="Nombre"
+                                                        placeholder="No. Identificacion"
                                                         className="texto"
                                                     />
                                                 </div>
                                                 <div id="i0a0k" className="gjs-cell3">
-                                                    <div id="iv07cp" className="texto">Dirección</div>
-                                                    <input
-                                                        type="text"
-                                                        id="ixeik5"
-                                                        required
-                                                        placeholder="Dirección"
-                                                        className="texto"
-                                                    />
+                                                    <div id="iv07cp" className="texto">AQUI SE PONE EL VALOR sty</div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
