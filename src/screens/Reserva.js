@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../css/homeAdmin.css';
+import '../css/reserva.css';
 import { TopBar } from '../items/TopBar';
 
 function Reserva() {
@@ -93,13 +93,13 @@ function Reserva() {
                         <div id="igqg" className="gjs-row">
                             <div id="ies5" className="gjs-cell">
                                 <div id="ix0m" className="gjs-row">
-                                    <div id="iagje" className="gjs-cell">
+                                    <div id="iagjee" className="gjs-cell">
                                         <div id="ie43l">Crear plan
                                             <br />
                                         </div>
                                     </div>
                                     <div id="ij1vb" className="gjs-cell">
-                                        <div id="ix2th" className="gjs-row">
+                                        <div id="ix2th" className="gjs-roww">
                                             <div id="itqtm" className="gjs-cell">
                                                 <select
                                                     value={client ? client.id : ''}
@@ -142,59 +142,18 @@ function Reserva() {
                                                 <button type="button" onClick={handleAddDetail}>Agregar Detalle</button>
                                             </div>
                                         </div>
-                                        <div id="isr62" className="gjs-row">
+                                        <div id="isr62" className="gjs-rowww">
                                             {planDetails.map((detail, index) => (
-                                                <div key={index}>
-                                                    <span>Detalle ID: {detail.planDetail ? detail.planDetail.id : 'N/A'}</span>
-                                                    <span>Fecha inicio: {detail.startDate}</span>
-                                                    <span>Fecha fin: {detail.endDate}</span>
+                                                <div key={index} className='lista'>
+                                                <span>Detalle ID: {detail.planDetail ? detail.planDetail.id : 'N/A'}</span>
+                                                <span>Fecha inicio: {detail.startDate}</span>
+                                                <span>Fecha fin: {detail.endDate}</span>
                                                 </div>
                                             ))}
-                                        </div>
-                                        <div id="iq8ek" className="gjs-row">
-                                            <div id="iq0k6" className="gjs-cell">
-                                                <button type="button" id="iv92q" className="boton_detalles">Detalles</button>
                                             </div>
-                                        </div>
-                                        <div id="iwtke" className="gjs-row">
+                                        <div id="iwtke" className="gjs-roww">
                                             <div id="ijpuy" className="gjs-cell">
                                                 <button type="button" id="if9va" className="boton" onClick={handleCreatePlan}>Crear</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="ikv4" className="gjs-cell">
-                                <div id="ilxmp" className="gjs-row">
-                                    <div id="i1axm" className="gjs-cell">
-                                        <div id="iwo55" className="gjs-row">
-                                            <div id="i4o0i" className="gjs-cell">
-                                                <div id="iri2j" className="gjs-row">
-                                                    <div id="i1hnz" className="gjs-cell">
-                                                        <div id="irp45">Valor a pagar
-                                                            <br />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="gjs-row" id="im77r">
-                                            <div className="gjs-cell" id="itjho">
-                                            </div>
-                                        </div>
-                                        <div className="gjs-row" id="iq5sa">
-                                            <div className="gjs-cell">
-                                                <div className="gjs-row" id="ihq4q">
-                                                    <div className="gjs-cell" id="it9vn">
-                                                        <div id="i9py8">Valor total a pagar:
-                                                            <br />
-                                                        </div>
-                                                    </div>
-                                                    <div className="gjs-cell">
-                                                        <div id="il58t">Insert your text here
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
